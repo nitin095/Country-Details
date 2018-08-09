@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:800');
+
+.americas-text,.europe-text,.africs-text,.asia-text,.oceania-text{
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    /* font-weight: 800; */
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.americas-img,.europe-img,.africa-img,.asia-img,.oceania-img{
+    filter: grayscale(1);
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.americas-img:hover,.europe-img:hover,.africa-img:hover,.asia-img:hover,.oceania-img:hover{
+    filter: grayscale(0)
+}
+
+.americas-col{
+    position: relative;
+    /* background: red */
+}
+.americas-text{
+    position: absolute;
+    top: 45%;
+    left: 0%;
+    color: rgb(0,170,0);
+}
+.europe-col{
+    position: relative;
+}
+.europe-text{
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    color: rgb(200,55,113);
+}
+.africa-col{
+    position: relative
+}
+.africa-img{
+    position: absolute;
+    top: -100%;
+    left: 10%;
+    z-index: -1
+}
+.africs-text{
+    color: rgb(83,103,108);
+}
+.asia-col{
+    position: relative;
+}
+.asia-img{
+    position: relative;
+    left: -10%;
+}
+.asia-text{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    color: rgb(255,153,85);
+}
+.asia-des{
+    position: absolute;
+    top: 35%;
+    right: -10%;
+    width: 14vw;
+    line-height: 1rem
+}
+.oceania-col{
+    position: relative;
+}
+.oceania-img{
+    position: relative;
+    top: -30%;
+    left: 10%
+}
+.oceania-text{
+    position: absolute;
+    top: 30%;
+    left: -30%;
+    color: rgb(0,170,212);
+}
