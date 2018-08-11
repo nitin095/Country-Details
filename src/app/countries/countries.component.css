@@ -1,0 +1,11 @@
+.region-name{
+    font-family: 'Poppins', sans-serif;
+    font-size: 5rem;
+    letter-spacing: -5px
+}
+.card-text{
+    line-height: 0.8rem
+}
+/* .card-text span:first-child{
+    line-height: 2rem
+} */

@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CountriesComponent } from './countries/countries.component';
 import { CountryComponent } from './country/country.component';
+import { HttpService } from './http.service';
+import { HttpClientModule } from "@angular/common/http";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,16 @@ import { CountryComponent } from './country/country.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FontAwesomeModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'countries/:region', component: CountriesComponent},
+      { path:'country/:code', component: CountryComponent}
     ])
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

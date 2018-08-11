@@ -1,3 +1,25 @@
-<p>
-  countries works!
-</p>
+<div class="container">
+  <h1 class="region-name">{{region | uppercase}}</h1>
+  <div class="row justify-content-center">
+    <div class="col-auto" *ngFor="let country of countries">
+      <div class="card my-3" style="width: 18rem;" [routerLink]="['/country',country.alpha3Code]">
+        <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh;">
+        <div class="card-body">
+          <h5 class="card-title mb-1">{{country.name}} ({{country.alpha3Code}})</h5>
+          <p class="card-text">
+            <small>
+              <b>Capital:</b> {{country.capital}}
+              <br>
+              <b>Population:</b> {{country.population}}
+              <br>
+              <b>Currency:</b> {{country.currencies[0].name}}
+              <br>
+              <b>Languages:</b><span *ngFor="let language of country.languages"> {{language.name}} </span>
+              <br>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
