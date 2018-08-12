@@ -6,6 +6,11 @@
 .card-text{
     line-height: 0.8rem
 }
+h2{
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin-top: 1rem 
+}
 /* .card-text span:first-child{
     line-height: 2rem
 } */
