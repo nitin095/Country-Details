@@ -10,13 +10,15 @@ import { CountryComponent } from './country/country.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LanguageNamePipe } from './language-name.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CountriesComponent,
-    CountryComponent
+    CountryComponent,
+    LanguageNamePipe
   ],
   imports: [
     BrowserModule,

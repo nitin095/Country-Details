@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpService} from '../http.service';
-import { faGlobe, faUsers, faMap, faCoins, faMapMarkedAlt, faMousePointer, faGlobeAsia, faLanguage } from '@fortawesome/free-solid-svg-icons';
+import { faLanguage, faUsers, faMap, faCoins, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-country',
@@ -12,13 +12,11 @@ import { faGlobe, faUsers, faMap, faCoins, faMapMarkedAlt, faMousePointer, faGlo
 })
 export class CountryComponent implements OnInit {
 
-  faGlobe = faGlobe;
+  faLanguage = faLanguage;
   faUsers = faUsers;
   faMap = faMap;
   faCoins = faCoins;
   faMapMarkedAlt = faMapMarkedAlt;
-  faMousePointer = faMousePointer;
-  faGlobeAsia = faGlobeAsia;
   public country: any;
   public translations: any = [];
 

@@ -15,6 +15,19 @@
     <div class="col mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
+          <fa-icon [icon]="faLanguage"></fa-icon>
+          <br>
+          <small>Language<span *ngIf="country.languages.length > 1">s</span></small>
+        </div>
+        <div class="col-12">
+          <span class="number" *ngFor="let language of country.languages; let last=last">{{language.name}}{{last ? '' : ', '}}</span>
+        </div>
+      </div>
+    </div>
+    <!-- 
+    <div class="col mt-5">
+      <div class="row text-center align-items-center">
+        <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faGlobe"></fa-icon>
           <br>
           <small>Country Code</small>
@@ -23,7 +36,7 @@
           <span class="number">{{country.alpha3Code}}</span>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="col mt-5">
       <div class="row text-center align-items-center">
@@ -66,8 +79,8 @@
 
     <div class="col mt-5">
       <div class="row text-center align-items-center">
-        <div class="col-12 mt-2 mb-1" style="line-height: 1rem">
-          <!-- <fa-icon [icon]="faCoins"></fa-icon> -->
+        <div class="col-12 mb-1" [ngClass]="{'mt-2 mb-1': country.currencies[0].symbol}" style="line-height: 1rem">
+          <fa-icon [icon]="faCoins" [hidden]="country.currencies[0].symbol"></fa-icon>
           <span class="currency-symbol">{{country.currencies[0].symbol}}</span>
           <br>
           <small>Currency</small>
@@ -123,10 +136,10 @@
     <div class="col-12">
       <h2>Translations</h2>
     </div>
-    <div class="col-2 lead text-center my-4 low-line-height" *ngFor="let translation of translations">
+    <div class="col-2 lead text-center my-4" *ngFor="let translation of translations">
       <b>{{translation.translation}}</b>
       <br>
-      <small class="text-muted">{{translation.lang}}</small>
+      <small class="text-muted lang-name">{{translation.lang | languageName}}</small>
     </div>
   </div>
 
@@ -222,17 +235,6 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.timezones">
-      <div class="row align-items-center">
-        <div class="col-4 pt-2 text-right text-muted">
-          <b>Timezone</b>
-        </div>
-        <div class="col-8 display-4">
-          {{country.timezones}}
-        </div>
-      </div>
-    </div>
-
     <div class="col-6 my-1" *ngIf="country.nativeName">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
@@ -266,16 +268,27 @@
       </div>
     </div>
 
-    <div class="col-6 my-1">
-        <div class="row align-items-center">
-          <div class="col-4 pt-2 text-right text-muted p-0 pr-3">
-            <b>Latitude and longitude</b>
-          </div>
-          <div class="col-8 display-4">
-            {{country.latlng}}
-          </div>
+    <div class="col-auto my-1">
+      <div class="row align-items-center">
+        <div class="col-auto pt-2 text-right text-muted p-0 pr-3">
+          <b>Latitude and longitude</b>
+        </div>
+        <div class="col display-4">
+          {{country.latlng}}
         </div>
       </div>
+    </div>
+
+    <div class="col-12 my-1" *ngIf="country.timezones">
+      <div class="row align-items-center justify-content-end">
+        <div class="col-2 pt-2 text-right text-muted">
+          <b>Timezone</b>
+        </div>
+        <div class="col-10 display-4" *ngFor="let timezone of country.timezones">
+          {{timezone}}
+        </div>
+      </div>
+    </div>
 
   </div>
   <!-- end row -->
