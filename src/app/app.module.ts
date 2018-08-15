@@ -11,6 +11,7 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LanguageNamePipe } from './language-name.pipe';
+import { NumberToMBPipe } from './number-to-mb.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LanguageNamePipe } from './language-name.pipe';
     HomeComponent,
     CountriesComponent,
     CountryComponent,
-    LanguageNamePipe
+    LanguageNamePipe,
+    NumberToMBPipe
   ],
   imports: [
     BrowserModule,

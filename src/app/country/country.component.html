@@ -59,7 +59,7 @@
           <small>Population</small>
         </div>
         <div class="col-12">
-          <span class="number">{{country.population}}</span>
+          <span class="number">{{country.population | numberToMB}}</span>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
           <small>Area</small>
         </div>
         <div class="col-12">
-          <span class="number">{{country.area}}</span>
+          <span class="number">{{country.area | numberToMB}} Km<sup>2</sup></span>
         </div>
       </div>
     </div>
@@ -123,10 +123,10 @@
     <div class="col-12">
       <h2>Borders</h2>
     </div>
-    <div class="col-2 lead text-center my-4" *ngFor="let code of country.borders" [routerLink]="['/country',code]">
-      <img class="img-fluid border-flag mb-2" src="https://restcountries.eu/data/{{code | lowercase}}.svg">
+    <div class="col-2 lead text-center my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
+      <img class="img-fluid border-flag mb-3" src="https://restcountries.eu/data/{{border.code | lowercase}}.svg">
       <br>
-      <b>{{code}}</b>
+      <div class="low-line-height"><b><small>{{border.name}}</small></b></div>
     </div>
     <div class="col-12 lead" [hidden]="country.borders[0]">{{country.name}} has no borders</div>
   </div>

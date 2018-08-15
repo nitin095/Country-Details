@@ -18,6 +18,7 @@ export class CountryComponent implements OnInit {
   faCoins = faCoins;
   faMapMarkedAlt = faMapMarkedAlt;
   public country: any;
+  public bordersName: any;
   public translations: any = [];
 
   constructor(private _route: ActivatedRoute, public router: Router, public httpService: HttpService, private location: Location) { 
@@ -37,12 +38,30 @@ export class CountryComponent implements OnInit {
             this.translations.push({ lang: language, translation: this.country.translations[language]})
           }
       console.log(this.translations)
+      this.getBordersName(this.country.borders)
       },
       error => {
         console.log(error.errorMessage)
       }
-    )
+    );
   });
+  }
+  // end ngOnInit
+
+  getBordersName = (borders) => {
+    this.bordersName = new Array;
+    for(let border of borders){
+      this.httpService.getCountry(border).subscribe(
+        data => {
+          this.bordersName.push({name: data.name, code: data.alpha3Code})
+        },
+        error => {
+          console.log(error.errorMessage)
+        }
+      )      
+    }
+    // end for
+    console.log(this.bordersName)
   }
 
 }

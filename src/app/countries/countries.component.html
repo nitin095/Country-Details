@@ -9,42 +9,46 @@
       </div>
     </div>
     <div class="col text-center">
-        <div class="row">
-          <div class="col-12 display-4">{{languages.size}}</div>
-          <small class="col-12">Languages spoken</small>
-        </div>
+      <div class="row">
+        <div class="col-12 display-4">{{languages.size}}</div>
+        <small class="col-12">Languages spoken</small>
       </div>
+    </div>
     <div class="col text-center">
       <div class="row">
-        <div class="col-12 display-4">{{population / 1000000000 | number:'1.1-2' }}B</div>
+        <div class="col-12 display-4">{{population | numberToMB}}</div>
         <small class="col-12">Overall population</small>
       </div>
     </div>
     <div class="col text-center">
       <div class="row">
-        <div class="col-12 display-4">{{highestPopulationCountry.population / 1000000000 | number:'1.1-2' }}B</div>
+        <div class="col-12 display-4">{{highestPopulationCountry.population | numberToMB }}</div>
         <div class="col-12">{{highestPopulationCountry.name}}</div>
         <small class="col-12">Highest population country</small>
       </div>
     </div>
     <div class="col text-center">
-        <div class="row">
-          <div class="col-12 display-4">{{lowestPopulationCountry.population}}</div>
-          <div class="col-12">{{lowestPopulationCountry.name}}</div>
-          <small class="col-12">Lowest population country</small>
-        </div>
+      <div class="row">
+        <div class="col-12 display-4">{{lowestPopulationCountry.population | numberToMB }}</div>
+        <div class="col-12">{{lowestPopulationCountry.name}}</div>
+        <small class="col-12">Lowest population country</small>
       </div>
+    </div>
   </div>
 
-<div class="row my-5">
-  <div class="col-12"><h2>Languages</h2></div>
-  <div class="col-auto lead" *ngFor="let lang of languages">
-    {{lang}}
+  <div class="row my-5">
+    <div class="col-12">
+      <h2>Languages</h2>
+    </div>
+    <div class="col-auto lead" *ngFor="let lang of languages">
+      {{lang}}
+    </div>
   </div>
-</div>
 
   <div class="row justify-content-center">
-      <div class="col-12"><h2>Countries</h2></div>
+    <div class="col-12">
+      <h2>Countries</h2>
+    </div>
     <div class="col-auto" *ngFor="let country of countries">
       <div class="card my-3" style="width: 18rem;" [routerLink]="['/country',country.alpha3Code]">
         <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh;">
