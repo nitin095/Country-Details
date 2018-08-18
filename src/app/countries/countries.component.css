@@ -22,6 +22,22 @@ h2{
     text-transform: uppercase;
     margin-top: 1rem 
 }
-/* .card-text span:first-child{
-    line-height: 2rem
-} */
+.search-input small{
+    font-weight: 700;
+    letter-spacing: 1px
+}
+.search-input input{
+    border: none;
+    border-bottom: 1px solid black
+}
+.search-input input:focus{
+    outline: none
+}
+.search-input{
+    border: 2px solid transparent;
+    padding-bottom: 0.3rem;
+    line-height: 1rem
+}
+.search-input > input:focus ~ .search-input{
+    border: 2px solid #008793
+}

@@ -10,8 +10,10 @@ import { CountryComponent } from './country/country.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LanguageNamePipe } from './language-name.pipe';
 import { NumberToMBPipe } from './number-to-mb.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { NumberToMBPipe } from './number-to-mb.pipe';
     CountriesComponent,
     CountryComponent,
     LanguageNamePipe,
-    NumberToMBPipe
+    NumberToMBPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
