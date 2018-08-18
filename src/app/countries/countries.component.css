@@ -15,7 +15,7 @@
     -webkit-text-fill-color: transparent;
 }
 .card-text{
-    line-height: 0.8rem
+    line-height: 1rem
 }
 h2{
     font-family: 'Poppins', sans-serif;
@@ -38,6 +38,37 @@ h2{
     padding-bottom: 0.3rem;
     line-height: 1rem
 }
-.search-input > input:focus ~ .search-input{
-    border: 2px solid #008793
+.search-input.active{
+    background: whitesmoke
+}
+.search-input.active input{
+    background: none
+}
+.sort small{
+    font-weight: 700;
+    letter-spacing: 1px
+}
+.sort select{
+    border: none;
+    border-bottom: 1px solid black
+}
+.sort{
+    border: 2px solid transparent;
+    padding-bottom: 0.3rem;
+    line-height: 1rem
+}
+.sort select:focus{
+    outline: none
+}
+.sort.active{
+    background: whitesmoke
+}
+.sort.active select{
+    background: none;
+}
+.hover:hover{
+    color: #051937;
+    background: whitesmoke;
+    border-radius: 15px;
+    cursor: pointer;
 }

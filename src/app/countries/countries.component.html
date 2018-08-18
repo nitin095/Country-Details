@@ -2,7 +2,8 @@
   <div class="row mt-3 justify-content-center">
     <h1 class="region-name">{{region | uppercase}}</h1>
   </div>
-  <img class="img-fluid d-block mx-auto" src="../../assets/{{region}}-header.png" [ngClass]="{'mt-3': region == 'americas' || region == 'oceania'}" style="height:50vh">
+  <img class="img-fluid d-block mx-auto" src="../../assets/{{region}}-header.png" [ngClass]="{'mt-3': region == 'americas' || region == 'oceania'}"
+    style="height:50vh">
 
   <div class="row justify-content-center my-5">
     <div class="col text-center">
@@ -43,7 +44,7 @@
     <div class="col-12">
       <h2>Languages</h2>
     </div>
-    <div class="col-auto lead" *ngFor="let lang of languages">
+    <div class="col-auto lead hover" *ngFor="let lang of languages" (click)="languageModel = lang">
       {{lang}}
     </div>
   </div>
@@ -54,14 +55,35 @@
     </div>
     <div class="col-12">
       <div class="row justify-content-end px-5">
-        <div class="col-auto search-input">
-            <small class="text-uppercase">Search</small><br>
-            <input type="text" [(ngModel)]="searchInput" placeholder="Search country">
+        <div class="col-auto sort mx-2" [ngClass]="{active: languageModel}">
+          <small class="text-uppercase">Filter by language</small>
+          <br>
+          <select [(ngModel)]="languageModel">
+            <option *ngFor="let language of languages" value="{{language}}">{{language}}</option>
+          </select>
+        </div>
+        <div class="col-auto sort mx-2" [ngClass]="{active: sortField}">
+          <small class="text-uppercase">Sort by</small>
+          <br>
+          <select [(ngModel)]="sortField" (change)="sortBy(sortField)">
+            <option value="name">Name A-Z</option>
+            <option value="name1">Name Z-A</option>
+            <option value="population">Population Low to high</option>
+            <option value="population1">Popuation High to low</option>
+          </select>
+        </div>
+        <div class="col-auto search-input" [ngClass]="{active: searchInput}">
+          <small class="text-uppercase">Search</small>
+          <br>
+          <input type="text" [(ngModel)]="searchInput" placeholder="Search country">
+        </div>
+        <div class="col-12" *ngIf="selectedCurrency">
+          Showing countries with currency - <b>{{selectedCurrency}}</b>
         </div>
       </div>
     </div>
-    <div class="col-auto" *ngFor="let country of countries | search: searchInput">
-      <div class="card my-3" style="width: 18rem;" [routerLink]="['/country',country.alpha3Code]">
+    <div class="col-auto" *ngFor="let country of countries | search: searchInput | search: languageModel:'language' | search: selectedCurrency:'currency'">
+      <div class="card my-3" style="width: 18rem;">
         <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh;">
         <div class="card-body">
           <h5 class="card-title mb-1">{{country.name}} ({{country.alpha3Code}})</h5>
@@ -71,13 +93,15 @@
               <br>
               <b>Population:</b> {{country.population}}
               <br>
-              <b>Currency:</b> {{country.currencies[0].name}}
+              <b>Currency:</b>
+              <span class="hover" *ngFor="let currency of country.currencies" (click)="selectedCurrency=currency.name"> {{currency.name}} </span>
               <br>
               <b>Languages:</b>
-              <span *ngFor="let language of country.languages"> {{language.name}} </span>
+              <span class="hover" *ngFor="let language of country.languages" (click)="languageModel=language.name"> {{language.name}} </span>
               <br>
             </small>
           </p>
+          <span [routerLink]="['/country',country.alpha3Code]">View details</span>
         </div>
       </div>
     </div>
