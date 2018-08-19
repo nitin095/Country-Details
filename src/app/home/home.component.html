@@ -1,9 +1,25 @@
-<div class="container">
-  <!-- <div class="row">
-        <div class="col">
-          <div class="display-4">All Regions</div>
-        </div>
-      </div> -->
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 90vh">
+    <div class="col cover-logo">
+      <div class="row align-items-center mx-2" style="height: 100%;">
+        <div class="display-1">Country Details</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row justify-content-center align-items-center text-center" style="height: 100%">
+        <fa-icon class="cover-icon" [icon]="faGlobe"></fa-icon>
+        <div class="col-12 lead">Get details of any country in the world.</div>
+        <input class="col-10 my-4 header-input" type="text" placeholder="Search any country">
+        <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <h2 class="mt-5">Pick a region to view it's countries</h2>
+  </div>
 
   <div class="row mt-5">
     <div class="col-4 americas-col">
@@ -99,7 +115,7 @@
     </div>
   </div>
 
-  <div class="row align-items-center text-center mt-5">
+  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
       <div class="display-1">Asia</div>
     </div>
@@ -107,7 +123,7 @@
       <img class="img-fluid" src="../../assets/asia.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5">
+  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
       <div class="display-1">Africa</div>
     </div>
@@ -115,7 +131,7 @@
       <img class="img-fluid" src="../../assets/africa.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5">
+  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
       <div class="display-1">Europe</div>
     </div>
@@ -123,7 +139,7 @@
       <img class="img-fluid" src="../../assets/europe.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5">
+  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
       <div class="display-1">Americas</div>
     </div>
@@ -131,7 +147,7 @@
       <img class="img-fluid" src="../../assets/americas.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5">
+  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
       <div class="display-1">Ocenia</div>
     </div>
@@ -139,4 +155,119 @@
       <img class="img-fluid" src="../../assets/oceniaa.png">
     </div>
   </div>
+
 </div>
+<!-- end container -->
+
+<div class="container my-5">
+  <div class="row align-items-center justify-content-center" style="height: 30vh;">
+    <div class="col">
+      <h2>Search country by code</h2>
+    </div>
+    <div class="col">
+      <input type="text">
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <h2 class="mt-5">Search countries by regional bloc</h2>
+  </div>
+  <div class="row bloc-row">
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">EU</h5>
+        <p class="card-text">(European Union)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">EFTA</h5>
+        <p class="card-text">(European Free Trade Association)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">CARICOM</h5>
+        <p class="card-text">(Caribbean Community)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">PA</h5>
+        <p class="card-text">(acific Alliance)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">AU</h5>
+        <p class="card-text">(African Union)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">USAN</h5>
+        <p class="card-text">(Union of South American Nations)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">EEU</h5>
+        <p class="card-text">(Eurasian Economic Union)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">AL</h5>
+        <p class="card-text">(Arab League)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">ASEAN</h5>
+        <p class="card-text">(Association of Southeast Asian Nations)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">CIAS</h5>
+        <p class="card-text">(Central American Integration System)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">CEFTA</h5>
+        <p class="card-text">(Central European Free Trade Agreement)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">NAFTA</h5>
+        <p class="card-text">(North American Free Trade Agreement)</p>
+      </div>
+    </div>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">SAARC</h5>
+        <p class="card-text">(South Asian Association for Regional Cooperation)</p>
+      </div>
+    </div>
+
+  </div>
+  <!-- end row -->
+</div>
+<!-- end container -->
