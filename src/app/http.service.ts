@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from "rxjs";
 
@@ -11,7 +11,7 @@ export class HttpService {
 
   public baseUrl = "https://restcountries.eu/rest/v2";
 
-  constructor(public _http:HttpClient) { 
+  constructor(public _http: HttpClient) {
     console.log('http service called')
   }
 
@@ -21,13 +21,23 @@ export class HttpService {
     return Observable.throw(err.message)
   }
 
-  public getRegion(region): any  {
-    let response = this._http.get(this.baseUrl+'/region/'+region+'?fields=name;alpha3Code;flag;capital;population;currencies;languages');
+  public getAllCountriesWithLanguage(language): any {
+    let response = this._http.get(this.baseUrl + '/lang/' + language);
+    return response
+  }
+
+  public getAllCountriesWithCurrency(currency): any {
+    let response = this._http.get(this.baseUrl + '/currency/' + currency);
+    return response
+  }
+
+  public getRegion(region): any {
+    let response = this._http.get(this.baseUrl + '/region/' + region + '?fields=name;alpha3Code;flag;capital;population;currencies;languages');
     return response
   }
 
   public getCountry(code): any {
-    let response = this._http.get(this.baseUrl+'/alpha/'+code);
+    let response = this._http.get(this.baseUrl + '/alpha/' + code);
     return response
   }
 

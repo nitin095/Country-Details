@@ -14,13 +14,26 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.filter-name{
+    font-family: 'Poppins', sans-serif;
+    font-size: 10rem;
+    letter-spacing: -5px;
+    color: lightgrey;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    /* filter: blur(1px); */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .card-text{
     line-height: 1rem
 }
 h2{
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
-    margin-top: 1rem 
+    margin-top: 1rem;
+    word-spacing: 0.5rem 
 }
 .search-input small{
     font-weight: 700;
@@ -28,7 +41,8 @@ h2{
 }
 .search-input input{
     border: none;
-    border-bottom: 1px solid black
+    border-bottom: 1px solid black;
+    width: 100%
 }
 .search-input input:focus{
     outline: none
@@ -50,7 +64,8 @@ h2{
 }
 .sort select{
     border: none;
-    border-bottom: 1px solid black
+    border-bottom: 1px solid black;
+    width: 100%
 }
 .sort{
     border: 2px solid transparent;
@@ -71,4 +86,22 @@ h2{
     background: whitesmoke;
     border-radius: 15px;
     cursor: pointer;
+}
+.reset-btn{
+    background:none;
+    border: 1px solid black;
+    color: black;
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: bold;
+    padding: 0.4rem 0.5rem;
+    border-radius: 2px;
+    transition: all 0.1s ease
+}
+.reset-btn:focus{
+    outline: none;
+}
+.reset-btn:hover{
+    background: black;
+    color: white
 }

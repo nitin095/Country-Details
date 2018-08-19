@@ -11,6 +11,7 @@ import { HttpService } from '../http.service'
 })
 export class CountriesComponent implements OnInit {
 
+  public filter: string;
   public region: string;
   public countries: any;
   public population: number;
@@ -22,17 +23,45 @@ export class CountriesComponent implements OnInit {
   constructor(private _route: ActivatedRoute, public router: Router, public httpService: HttpService, private location: Location) { }
 
   ngOnInit() {
-    this.region = this._route.snapshot.paramMap.get('region');
-    this.httpService.getRegion(this.region).subscribe(
-      data => {
-        this.countries = data;
-        this.getStats(this.countries);
-      },
-      error => {
-        console.log(error.errorMessage)
+    this._route.params.subscribe(params => {
+      this.filter = this._route.snapshot.paramMap.get('filter');
+      if (this.filter.length == 2) {
+        console.log('language filter')
+        this.httpService.getAllCountriesWithLanguage(this.filter).subscribe(
+          data => {
+            this.countries = data;
+            this.getStats(this.countries);
+          },
+          error => {
+            console.log(error.errorMessage)
+          }
+        )
+      } else if (this.filter.length == 3) {
+        console.log('currency filter')
+        this.httpService.getAllCountriesWithCurrency(this.filter).subscribe(
+          data => {
+            this.countries = data;
+            this.getStats(this.countries);
+          },
+          error => {
+            console.log(error.errorMessage)
+          }
+        )
+      } else {
+        this.region = this.filter;
+        this.httpService.getRegion(this.filter).subscribe(
+          data => {
+            this.countries = data;
+            this.getStats(this.countries);
+          },
+          error => {
+            console.log(error.errorMessage)
+          }
+        )
       }
-    )
+    });
   }
+  // end ngOnInit
 
   getStats = (countries: any) => {
     this.population = 0;
