@@ -33,7 +33,7 @@ import { SearchPipe } from './search.pipe';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'countries/:filter', component: CountriesComponent},
+      { path: 'countries/:filter/:id', component: CountriesComponent},
       { path:'country/:code', component: CountryComponent}
     ])
   ],

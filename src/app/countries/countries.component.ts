@@ -12,6 +12,7 @@ import { HttpService } from '../http.service'
 export class CountriesComponent implements OnInit {
 
   public filter: string;
+  public id: any;
   public region: string;
   public countries: any;
   public population: number;
@@ -24,10 +25,12 @@ export class CountriesComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe(params => {
+      this.region = undefined;
       this.filter = this._route.snapshot.paramMap.get('filter');
-      if (this.filter.length == 2) {
-        console.log('language filter')
-        this.httpService.getAllCountriesWithLanguage(this.filter).subscribe(
+      this.id = this._route.snapshot.paramMap.get('id');
+      if (this.filter == 'region') {
+        this.region = this.id;
+        this.httpService.getRegion(this.region).subscribe(
           data => {
             this.countries = data;
             this.getStats(this.countries);
@@ -36,9 +39,20 @@ export class CountriesComponent implements OnInit {
             console.log(error.errorMessage)
           }
         )
-      } else if (this.filter.length == 3) {
+      }else if (this.filter == 'language') {
+        console.log('language filter')
+        this.httpService.getAllCountriesWithLanguage(this.id).subscribe(
+          data => {
+            this.countries = data;
+            this.getStats(this.countries);
+          },
+          error => {
+            console.log(error.errorMessage)
+          }
+        )
+      } else if (this.filter == 'currency') {
         console.log('currency filter')
-        this.httpService.getAllCountriesWithCurrency(this.filter).subscribe(
+        this.httpService.getAllCountriesWithCurrency(this.id).subscribe(
           data => {
             this.countries = data;
             this.getStats(this.countries);
@@ -48,8 +62,8 @@ export class CountriesComponent implements OnInit {
           }
         )
       } else {
-        this.region = this.filter;
-        this.httpService.getRegion(this.filter).subscribe(
+        console.log('bloc filter')
+        this.httpService.getAllCountriesWithBloc(this.id).subscribe(
           data => {
             this.countries = data;
             this.getStats(this.countries);

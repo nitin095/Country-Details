@@ -9,21 +9,57 @@
       <div class="row justify-content-center align-items-center text-center" style="height: 100%">
         <fa-icon class="cover-icon" [icon]="faGlobe"></fa-icon>
         <div class="col-12 lead">Get details of any country in the world.</div>
-        <input class="col-10 my-4 header-input" type="text" placeholder="Search any country">
-        <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+        <small class="col-12">
+          <b class="text-muted">Search by: </b>
+          <span class="search-type" [ngClass]="{'active': isActive('name')}" (click)="makeActive('name')">Name</span>
+          <span class="search-type" [ngClass]="{'active': isActive('alpha')}" (click)="makeActive('alpha')">Country code</span>
+          <span class="search-type" [ngClass]="{'active': isActive('currency')}" (click)="makeActive('currency')">Currency</span>
+          <span class="search-type" [ngClass]="{'active': isActive('lang')}" (click)="makeActive('lang')">Language</span>
+          <span class="search-type" [ngClass]="{'active': isActive('capital')}" (click)="makeActive('capital')">Capital city</span>
+          <span class="search-type" [ngClass]="{'active': isActive('callingcode')}" (click)="makeActive('callingcode')">Calling code</span>
+        </small>
+        <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput">
+        <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(activeSearchType,searchInput)"></fa-icon>
+        <div class="col-12 my-3" *ngIf="searchResult && searchResult[0] == 'not found'">No country found!</div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- search results container -->
+<div class="container my-5 search-results-container" *ngIf="searchResult" [hidden]="searchResult[0] == 'not found'">
+  <div class="row align-items-center">
+    <div class="col-12">
+      <h2>Search results</h2>
+    </div>
+    <div class="col-12 mb-2">
+      <span class="lead">{{searchResult.length}} <span *ngIf="searchResult.length>1">countries</span><span [hidden]="searchResult.length>1">country</span> found for {{searchText}}</span>
+    </div>
+    <div class="card m-2" *ngFor="let country of searchResult" style="width: 20vw;color: gray;border-radius: 0px">
+      <div class="row align-items-center text-center" [routerLink]="['/country',country.alpha3Code]">
+        <div class="col-auto">
+          <img class="img-fluid" src="{{country.flag}}" style="height: 10vh">
+        </div>
+        <div class="col">
+          <small class="row">
+            <b class="col-12 low-line-height">{{country.name}}</b>
+            <!-- <span class="col-12">{{country.capital}}</span> -->
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search results container -->
+
 <div class="container my-5">
   <div class="row">
-    <h2 class="mt-5">Pick a region to view it's countries</h2>
+    <h2 class="col mt-5">Pick a region to view it's countries</h2>
   </div>
 
   <div class="row mt-5">
     <div class="col-4 americas-col">
-      <img class="img-fluid americas-img" [routerLink]="['/countries','americas']" src="../../assets/americas.png">
+      <img class="img-fluid americas-img" [routerLink]="['/countries','region','americas']" src="../../assets/americas.png">
       <div class="americas-text text-center">
         <span>Americas</span>
         <div class="row americas-des">
@@ -42,7 +78,7 @@
     <div class="col-8">
       <div class="row">
         <div class="col-4 europe-col">
-          <img class="img-fluid europe-img" [routerLink]="['/countries','europe']" src="../../assets/europe.png">
+          <img class="img-fluid europe-img" [routerLink]="['/countries','region','europe']" src="../../assets/europe.png">
           <div class="europe-text text-center">
             <span>Europe</span>
             <div class="row europe-des">
@@ -59,7 +95,7 @@
           </div>
         </div>
         <div class="col-8 asia-col">
-          <img class="img-fluid asia-img" [routerLink]="['/countries','asia']" src="../../assets/asia.png">
+          <img class="img-fluid asia-img" [routerLink]="['/countries','region','asia']" src="../../assets/asia.png">
           <div class="asia-text text-center">
             <span>Asia</span>
             <div class="row asia-des">
@@ -78,7 +114,7 @@
       </div>
       <div class="row">
         <div class="col-8 africa-col">
-          <img class="img-fluid africa-img" [routerLink]="['/countries','africa']" src="../../assets/africa.png">
+          <img class="img-fluid africa-img" [routerLink]="['/countries','region','africa']" src="../../assets/africa.png">
           <div class="africa-text text-center">
             <div class="row africa-des">
               <div class="col-12 low-line-height">
@@ -95,7 +131,7 @@
           </div>
         </div>
         <div class="col-4 oceania-col">
-          <img class="img-fluid oceania-img" [routerLink]="['/countries','oceania']" src="../../assets/ocenia.png">
+          <img class="img-fluid oceania-img" [routerLink]="['/countries','region','oceania']" src="../../assets/ocenia.png">
           <div class="oceania-text text-center">
             <div class="row oceania-des">
               <div class="col-12 low-line-height">
@@ -160,108 +196,97 @@
 <!-- end container -->
 
 <div class="container my-5">
-  <div class="row align-items-center justify-content-center" style="height: 30vh;">
-    <div class="col">
-      <h2>Search country by code</h2>
-    </div>
-    <div class="col">
-      <input type="text">
-    </div>
-  </div>
-</div>
-
-<div class="container my-5">
   <div class="row">
-    <h2 class="mt-5">Search countries by regional bloc</h2>
+    <h2 class="col mt-5">Countries by regional bloc</h2>
   </div>
   <div class="row bloc-row">
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','EU']">
         <h5 class="card-title mb-1">EU</h5>
         <p class="card-text">(European Union)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','EFTA']">
         <h5 class="card-title mb-1">EFTA</h5>
         <p class="card-text">(European Free Trade Association)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','CARICOM']">
         <h5 class="card-title mb-1">CARICOM</h5>
         <p class="card-text">(Caribbean Community)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','PA']">
         <h5 class="card-title mb-1">PA</h5>
-        <p class="card-text">(acific Alliance)</p>
+        <p class="card-text">(Pacific Alliance)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','AU']">
         <h5 class="card-title mb-1">AU</h5>
         <p class="card-text">(African Union)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','USAN']">
         <h5 class="card-title mb-1">USAN</h5>
         <p class="card-text">(Union of South American Nations)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','EEU']">
         <h5 class="card-title mb-1">EEU</h5>
         <p class="card-text">(Eurasian Economic Union)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','AL']">
         <h5 class="card-title mb-1">AL</h5>
         <p class="card-text">(Arab League)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','ASEAN']">
         <h5 class="card-title mb-1">ASEAN</h5>
         <p class="card-text">(Association of Southeast Asian Nations)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','CIAS']">
         <h5 class="card-title mb-1">CIAS</h5>
         <p class="card-text">(Central American Integration System)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','CEFTA']">
         <h5 class="card-title mb-1">CEFTA</h5>
         <p class="card-text">(Central European Free Trade Agreement)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','NAFTA']">
         <h5 class="card-title mb-1">NAFTA</h5>
         <p class="card-text">(North American Free Trade Agreement)</p>
       </div>
     </div>
 
     <div class="card m-3">
-      <div class="card-body">
+      <div class="card-body" [routerLink]="['/countries','regionalbloc','SAARC']">
         <h5 class="card-title mb-1">SAARC</h5>
         <p class="card-text">(South Asian Association for Regional Cooperation)</p>
       </div>

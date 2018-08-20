@@ -31,6 +31,11 @@ export class HttpService {
     return response
   }
 
+  public getAllCountriesWithBloc(bloc): any {
+    let response = this._http.get(this.baseUrl + '/regionalbloc/' + bloc);
+    return response
+  }
+
   public getRegion(region): any {
     let response = this._http.get(this.baseUrl + '/region/' + region + '?fields=name;alpha3Code;flag;capital;population;currencies;languages');
     return response
@@ -38,6 +43,11 @@ export class HttpService {
 
   public getCountry(code): any {
     let response = this._http.get(this.baseUrl + '/alpha/' + code);
+    return response
+  }
+
+  public getCountryBySearch(searchType,search): any {
+    let response = this._http.get(`${this.baseUrl}/${searchType}/${search}?fields=name;alpha3Code;flag;capital;population;currencies;languages`);
     return response
   }
 

@@ -1,8 +1,9 @@
 <div class="container" *ngIf="countries">
   <div class="row mt-3 justify-content-center text-center">
-    <h1 [ngClass]="{'region-name': region,'filter-name': !region}">{{filter | languageName | uppercase}}</h1>
-    <h2 class="col-12 mt-0" *ngIf="filter.length == 2">Countries with language {{filter| languageName}}</h2>
-    <h2 class="col-12 mt-0" *ngIf="filter.length == 3">Countries with currency - {{filter}}</h2>
+    <h1 [ngClass]="{'region-name': region,'filter-name': !region}">{{id | languageName | uppercase}}</h1>
+    <h2 class="col-12 mt-0" *ngIf="filter == 'language'">Countries with language {{id| languageName}}</h2>
+    <h2 class="col-12 mt-0" *ngIf="filter == 'currency'">Countries with currency - {{id}}</h2>
+    <h2 class="col-12 mt-0" *ngIf="filter == 'regionalbloc'">Countries with regional bloc - {{id}}</h2>
   </div>
   <img *ngIf="region" class="img-fluid d-block mx-auto" src="../../assets/{{region}}-header.png" [ngClass]="{'mt-3': region == 'americas' || region == 'oceania'}"
     style="height:50vh">
@@ -100,10 +101,10 @@
               <b>Population:</b> {{country.population}}
               <br>
               <b>Currency:</b>
-              <span class="hover" *ngFor="let currency of country.currencies" [routerLink]="['/countries',currency.code]"> {{currency.name}} </span>
+              <span class="hover" *ngFor="let currency of country.currencies" [routerLink]="['/countries','currency',currency.code]"> {{currency.name}} </span>
               <br>
               <b>Languages:</b>
-              <span class="hover" *ngFor="let language of country.languages" [routerLink]="['/countries',language.iso639_1]"> {{language.name}} </span>
+              <span class="hover" *ngFor="let language of country.languages" [routerLink]="['/countries','language',language.iso639_1]"> {{language.name}} </span>
               <br>
             </small>
           </p>
