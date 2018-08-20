@@ -1,28 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Country Deatils</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search country" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/home']">Country Deatils</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" *ngFor="let region of ['Americas','Europe','Asia','Africa','Oceania']">
+        <a class="nav-link" [routerLink]="['/countries','region',region | lowercase]">{{region}}</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <input class="mr-sm-2" type="search" placeholder="Search country" aria-label="Search" [(ngModel)]="searchInput">
+      <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(searchInput)"></fa-icon>
     </div>
-  </nav>  
+  </div>
+</nav>
 
+<div class="container-fluid search-result-container" *ngIf="search">
+  <div class="row justify-content-end">
+    <div class="col-3 card">
+      <div class="row justify-content-between align-items-center">
+          <h2 class="col-auto lead pt-2">Results</h2>
+          <fa-icon class="col-auto search-close-button" [icon]="faTimesCircle" (click)="search=searchInput=undefined"></fa-icon>
+      </div>
+      <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]">
+        <div class="col-3"><img class="img-fluid" src="{{country.flag}}"></div>
+        <div class="col-9">{{country.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+
+<footer>
+  <div class="container">
+    <div class="row py-2">
+      <div class="col">
+        Made using REST Countries API
+      </div>
+      <div class="col text-right">
+        Contact
+      </div>
+    </div>
+  </div>
+</footer>

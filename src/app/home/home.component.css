@@ -37,6 +37,15 @@ box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
     color: grey;
     transition: all 0.5s ease
 }
+.cover-text{
+    font-size: 1.8rem;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400
+}
 .search-icon:hover{
     color: #004d7a;
     cursor: pointer;
@@ -114,7 +123,11 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
 }
 
 .americas-img:hover,.europe-img:hover,.africa-img:hover,.asia-img:hover,.oceania-img:hover{
-    filter: grayscale(0)
+    filter: drop-shadow(0 0 0.2rem grey) 
+}
+
+.americas-img:focus,.europe-img:focus,.africa-img:focus,.asia-img:focus,.oceania-img:focus{
+    outline: none
 }
 
 .americas-col{
@@ -233,6 +246,8 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 5px -4px rgba(0,0,0,0.75);  
 }
 .bloc-row > .card:hover{
+    cursor: default;
+    border-color: #00bf72;
     -webkit-box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75); 

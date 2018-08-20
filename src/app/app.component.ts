@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  faSearch = faSearch;
+  faTimesCircle = faTimesCircle;
+  public search: any;
+
+  constructor(public httpService: HttpService) {
+    console.log('app component constructor called')
+  }
+
+  getCountry = (search) => {
+    this.httpService.getCountryBySearch('name', search).subscribe(
+      data => {
+          this.search = data;
+        console.log(this.search)
+      },
+      error => {
+        this.search = ['not found']
+        console.log(error.errorMessage)
+      }
+    );
+  }
+  // end getCountry
+
 }
+
