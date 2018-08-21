@@ -27,11 +27,14 @@
   <div class="row justify-content-end">
     <div class="col-3 card">
       <div class="row justify-content-between align-items-center">
-          <h2 class="col-auto lead pt-2">Results</h2>
-          <fa-icon class="col-auto search-close-button" [icon]="faTimesCircle" (click)="search=searchInput=undefined"></fa-icon>
+        <h2 class="col-auto lead pt-2">Results</h2>
+        <fa-icon class="col-auto search-close-button" [icon]="faTimesCircle" (click)="search=searchInput=undefined"></fa-icon>
       </div>
-      <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]" (click)="search=undefined">
-        <div class="col-3"><img class="img-fluid" src="{{country.flag}}"></div>
+      <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]"
+        (click)="search=undefined">
+        <div class="col-3">
+          <img class="img-fluid" src="{{country.flag}}">
+        </div>
         <div class="col-9">{{country.name}}</div>
       </div>
     </div>
@@ -42,13 +45,40 @@
 
 <footer>
   <div class="container">
-    <div class="row py-2">
+    <div class="row py-4">
       <div class="col">
-        Made using REST Countries API
+        <div class="row">
+          <span class="col-12">Made using REST Countries API</span>
+          <div class="col-12">
+            <a class="footer-link" href="https://restcountries.eu" target="blank">restcountries.eu</a>
+          </div>
+          <span class="col-12">Github repository</span>
+          <div class="col-12">
+            <a class="footer-link" href="https://github.com/nitin095/Country-Details" target="blank">github.com/nitin095/Country-Details</a>
+          </div>
+        </div>
       </div>
-      <div class="col text-right">
-        Contact
+      <div class="col-3 text-center">
+        <div class="row">
+          <div class="col-12">
+            <fa-icon class="mr-2 footer-icon" [icon]="faEnvelope"></fa-icon>
+          </div>
+          <span class="col-12 lead">nitinshokeen9@gmail.com</span>
+        </div>
       </div>
+      <div class="col-3 text-center">
+        <div class="row">
+          <div class="col-12">
+            <a href="https://github.com/nitin095" target="blank">
+              <fa-icon class="mr-2 footer-icon" [icon]="faGithubSquare"></fa-icon>
+            </a>
+          </div>
+          <div class="col-12 lead">github.com/nitin095</div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-1">
+      <small class="col text-center">&copy; 2018 Nitin Shokeen</small>
     </div>
   </div>
 </footer>

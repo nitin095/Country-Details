@@ -18,7 +18,7 @@
           <span class="search-type" [ngClass]="{'active': isActive('capital')}" (click)="makeActive('capital')">Capital city</span>
           <span class="search-type" [ngClass]="{'active': isActive('callingcode')}" (click)="makeActive('callingcode')">Calling code</span>
         </small>
-        <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput" (keyup.enter)="getCountry(activeSearchType,searchInput)">
+        <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput" (keyup.enter)="getCountry(activeSearchType,searchInput)" placeholder="Search country by {{getPlaceholderText(activeSearchType)}}">
          <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(activeSearchType,searchInput)"></fa-icon>
         <div class="col-12 my-3" *ngIf="searchResult && searchResult[0] == 'not found'">No country found!</div>
       </div>
@@ -43,7 +43,7 @@
         <div class="col">
           <small class="row">
             <b class="col-12 low-line-height">{{country.name}}</b>
-            <!-- <span class="col-12">{{country.capital}}</span> -->
+            <span class="col-12 text-muted">{{country.subregion}}</span>
           </small>
         </div>
       </div>

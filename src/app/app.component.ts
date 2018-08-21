@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimesCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { HttpService } from './http.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class AppComponent {
   title = 'app';
   faSearch = faSearch;
   faTimesCircle = faTimesCircle;
+  faEnvelope = faEnvelope;
+  faGithubSquare = faGithubSquare;
   public search: any;
 
   constructor(public httpService: HttpService) {

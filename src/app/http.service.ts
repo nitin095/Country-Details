@@ -47,7 +47,7 @@ export class HttpService {
   }
 
   public getCountryBySearch(searchType,search): any {
-    let response = this._http.get(`${this.baseUrl}/${searchType}/${search}?fields=name;alpha3Code;flag;capital;population;currencies;languages`);
+    let response = this._http.get(`${this.baseUrl}/${searchType}/${search}?fields=name;alpha3Code;flag;subregion`);
     return response
   }
 

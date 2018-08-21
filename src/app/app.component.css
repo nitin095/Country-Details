@@ -47,7 +47,7 @@ input:focus{
 } */
 
 footer{
-    margin-top: 5rem;
+    margin-top: 10rem;
     padding-top: 1rem;
     background: #004d7a;
     color: white;
@@ -56,30 +56,39 @@ footer{
 }
 footer:before{
     content: "";
-    height: 10vh;
-    width: 50vw;
+    height: 15vh;
+    width: 90vw;
     position: absolute;
-    top: -5vh;
+    top: -8vh;
     z-index: -1;
-    background: #004d7a;
-    border-top: 7px solid #00bf72;
-    transform: rotate(3deg) skewX(3deg);
-    -webkit-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
--moz-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
+    background: #00bf72;
+    transform: rotate(3.8deg) skewX(3.8deg);
+    -webkit-box-shadow: 0px 3px 22px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 22px -3px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 22px -3px rgba(0,0,0,0.75);
 }
 footer::after{
     content: "";
-    height: 10vh;
-    width: 50vw;
+    height: 20vh;
+    width: 100vw;
     position: absolute;
-    top: -5vh;
+    top: -8vh;
     right: 0;
     z-index: -1;
     background: #004d7a;
-    border-top: 7px solid #00bf72;
-    transform: rotate(-3deg) skewX(-3deg);
-    -webkit-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
--moz-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
-box-shadow: 0px -3px 12px -6px rgba(0,0,0,0.75);
+    transform: rotate(-3.8deg) skewX(-3.8deg);
+    -webkit-box-shadow: 0px 3px 26px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 26px -3px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 26px -3px rgba(0,0,0,0.75);
+}
+.footer-link{
+    text-decoration: none;
+    color: #00bf72
+}
+.footer-link:hover{
+    color: #47d49c
+}
+.footer-icon{
+    color: #00bf72;
+    font-size: 1.8rem
 }

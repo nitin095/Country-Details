@@ -33,6 +33,21 @@ export class HomeComponent implements OnInit {
     this.activeSearchType = type
   }
 
+  getPlaceholderText = (type) => {
+    if (type == 'name')
+      return 'name'
+    if (type == 'alpha')
+      return `country code. Eg. 'IND' for India`
+    if (type == 'currency')
+      return `currency code. Eg. 'INR' for Indian National Rupee`
+    if (type == 'lang')
+      return `language code. Eg. 'HI' for Hindi`
+    if (type == 'capital')
+      return `capital city. Eg. 'New Delhi' for India`
+    if (type == 'callingcode')
+      return `calling code. Eg. '91' for India`
+  }
+
   getCountry = (searchType, search) => {
     this.setSearchText(searchType, search);
     this.httpService.getCountryBySearch(searchType, search).subscribe(
@@ -41,7 +56,7 @@ export class HomeComponent implements OnInit {
           this.searchResult = [data];
         else
           this.searchResult = data;
-          this.scrollToResults();
+        this.scrollToResults();
         console.log(this.searchResult)
       },
       error => {
