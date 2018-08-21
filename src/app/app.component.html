@@ -17,7 +17,7 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-      <input class="mr-sm-2" type="search" placeholder="Search country" aria-label="Search" [(ngModel)]="searchInput">
+      <input class="mr-sm-2" type="search" placeholder="Search country" aria-label="Search" [(ngModel)]="searchInput" (keyup.enter)="getCountry(searchInput)">
       <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(searchInput)"></fa-icon>
     </div>
   </div>
@@ -30,7 +30,7 @@
           <h2 class="col-auto lead pt-2">Results</h2>
           <fa-icon class="col-auto search-close-button" [icon]="faTimesCircle" (click)="search=searchInput=undefined"></fa-icon>
       </div>
-      <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]">
+      <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]" (click)="search=undefined">
         <div class="col-3"><img class="img-fluid" src="{{country.flag}}"></div>
         <div class="col-9">{{country.name}}</div>
       </div>

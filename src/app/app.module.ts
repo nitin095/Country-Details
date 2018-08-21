@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LanguageNamePipe } from './language-name.pipe';
 import { NumberToMBPipe } from './number-to-mb.pipe';
 import { SearchPipe } from './search.pipe';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchPipe } from './search.pipe';
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
+    ScrollToModule.forRoot(),
     FormsModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },

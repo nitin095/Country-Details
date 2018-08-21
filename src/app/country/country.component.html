@@ -20,7 +20,7 @@
           <small>Language<span *ngIf="country.languages.length > 1">s</span></small>
         </div>
         <div class="col-12">
-          <span class="number" *ngFor="let language of country.languages; let last=last">{{language.name}}{{last ? '' : ', '}}</span>
+          <span class="number hover" *ngFor="let language of country.languages; let last=last" [routerLink]="['/countries','language',language.iso639_1]">{{language.name}}{{last ? '' : ', '}}</span>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
           <small>Currency</small>
         </div>
         <div class="col-12">
-          <span class="number">{{country.currencies[0].name}}</span>
+          <span class="number hover" [routerLink]="['/countries','currency',country.currencies[0].code]">{{country.currencies[0].name}}</span>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
     </div>
     <div class="col text-center">
       <!-- <fa-icon [icon]="faGlobeAsia"></fa-icon><br> -->
-      <span class="display-4">{{country.region}}/{{country.subregion}}</span>
+      <span class="display-4"><span class="hover" [routerLink]="['/countries','region',country.region | lowercase]">{{country.region}}</span>/{{country.subregion}}</span>
     </div>
     <div class="col-4">
       <div class="region-img-container">
@@ -123,7 +123,7 @@
     <div class="col-12">
       <h2>Borders</h2>
     </div>
-    <div class="col-2 lead text-center my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
+    <div class="col-2 lead text-center border-col my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
       <img class="img-fluid border-flag mb-3" src="https://restcountries.eu/data/{{border.code | lowercase}}.svg">
       <br>
       <div class="low-line-height"><b><small>{{border.name}}</small></b></div>

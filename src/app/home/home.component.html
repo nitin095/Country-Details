@@ -18,8 +18,8 @@
           <span class="search-type" [ngClass]="{'active': isActive('capital')}" (click)="makeActive('capital')">Capital city</span>
           <span class="search-type" [ngClass]="{'active': isActive('callingcode')}" (click)="makeActive('callingcode')">Calling code</span>
         </small>
-        <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput">
-        <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(activeSearchType,searchInput)"></fa-icon>
+        <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput" (keyup.enter)="getCountry(activeSearchType,searchInput)">
+         <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(activeSearchType,searchInput)"></fa-icon>
         <div class="col-12 my-3" *ngIf="searchResult && searchResult[0] == 'not found'">No country found!</div>
       </div>
     </div>
@@ -27,8 +27,8 @@
 </div>
 
 <!-- search results container -->
-<div class="container my-5 search-results-container" *ngIf="searchResult" [hidden]="searchResult[0] == 'not found'">
-  <div class="row align-items-center">
+<div id="result" class="container my-5 search-results-container">
+  <div class="row align-items-center" *ngIf="searchResult" [hidden]="searchResult[0] == 'not found'">
     <div class="col-12">
       <h2>Search results</h2>
     </div>

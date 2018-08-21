@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faGlobe, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from '../http.service';
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   public searchResult: any;
   public searchText: string;
 
-  constructor(public httpService: HttpService) {
+  constructor(public httpService: HttpService, private _scrollToService: ScrollToService) {
     console.log('home component constructor called')
   }
 
@@ -37,9 +38,10 @@ export class HomeComponent implements OnInit {
     this.httpService.getCountryBySearch(searchType, search).subscribe(
       data => {
         if (searchType == 'alpha')
-          this.searchResult = [data]
+          this.searchResult = [data];
         else
           this.searchResult = data;
+          this.scrollToResults();
         console.log(this.searchResult)
       },
       error => {
@@ -59,6 +61,16 @@ export class HomeComponent implements OnInit {
       this.searchText = `calling code "${search}"`
     else
       this.searchText = `${type} "${search}"`
+  }
+
+  public scrollToResults() {
+
+    const config: ScrollToConfigOptions = {
+      target: 'result',
+      offset: -100
+    };
+
+    this._scrollToService.scrollTo(config);
   }
 
 }
