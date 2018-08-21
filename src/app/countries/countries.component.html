@@ -52,12 +52,12 @@
     </div>
   </div>
 
-  <div class="row justify-content-center align-items-center">
+  <div class="row justify-content-center">
     <div class="col-12">
       <h2>Countries</h2>
     </div>
     <div class="col-12">
-      <div class="row justify-content-end px-5">
+      <div class="row justify-content-end px-5 pt-2 pb-3">
         <div class="col-3 sort" [ngClass]="{active: languageModel}" *ngIf="region">
           <small class="text-uppercase">Filter by language</small>
           <br>
@@ -90,26 +90,65 @@
       </div>
     </div>
     <div class="col-auto" *ngFor="let country of countries | search: searchInput | search: languageModel:'language' | search: selectedCurrency:'currency'">
-      <div class="card my-3" style="width: 18rem;">
-        <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh;">
-        <div class="card-body">
-          <h5 class="card-title mb-1">{{country.name}} ({{country.alpha3Code}})</h5>
-          <p class="card-text">
-            <small>
-              <b>Capital:</b> {{country.capital}}
-              <br>
-              <b>Population:</b> {{country.population}}
-              <br>
-              <b>Currency:</b>
-              <span class="hover" *ngFor="let currency of country.currencies" [routerLink]="['/countries','currency',currency.code]"> {{currency.name}} </span>
-              <br>
-              <b>Languages:</b>
-              <span class="hover" *ngFor="let language of country.languages" [routerLink]="['/countries','language',language.iso639_1]"> {{language.name}} </span>
-              <br>
-            </small>
-          </p>
-          <span [routerLink]="['/country',country.alpha3Code]">View details</span>
+      <div class="card my-3" style="width: 15rem;min-height: 21rem">
+        <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh">
+        <div class="px-3 pt-2 pb-4">
+          <div class="row text-center">
+            <div class="col-12">
+              <span class="lead" style="line-height: 1.35rem">{{country.name}}</span>
+            </div>
+            <div class="col-12 country-code-col">
+              <small>{{country.alpha3Code}}</small>
+            </div>
+          </div>
+          <div class="row no-gutters details-row">
+            <div class="col-4 mr-1 item-title">
+              Subregion:
+            </div>
+            <div class="col">
+              {{country.subregion}}
+            </div>
+          </div>
+          <div class="row no-gutters details-row" *ngIf="country.capital">
+            <div class="col-4 mr-1 item-title">
+              Capital:
+            </div>
+            <div class="col">
+              {{country.capital}}
+            </div>
+          </div>
+          <div class="row no-gutters details-row">
+            <div class="col-4 mr-1 item-title">
+              Population:
+            </div>
+            <div class="col">
+              {{country.population}}
+            </div>
+          </div>
+          <div class="row no-gutters details-row">
+            <div class="col-4 mr-1 item-title">
+              Currency:
+            </div>
+            <div class="col">
+              <span class="hover" *ngFor="let currency of country.currencies;let last=last" [routerLink]="['/countries','currency',currency.code]"> {{currency.name}}{{last ? '' : ', '}} </span>
+            </div>
+          </div>
+          <div class="row no-gutters details-row">
+              <div class="col-4 mr-1 item-title">
+                Languages:
+              </div>
+              <div class="col">
+                  <span class="hover" *ngFor="let language of country.languages;let last=last" [routerLink]="['/countries','language',language.iso639_1]">
+                    {{language.name}}{{last ? '' : ', '}}</span>
+              </div>
+            </div>
+            <!-- <div class="row mt-2 justify-content-center">
+              <div class="col-auto"> -->
+                  
+              <!-- </div>
+            </div> -->
         </div>
+        <button [routerLink]="['/country',country.alpha3Code]">View details</button>
       </div>
     </div>
   </div>

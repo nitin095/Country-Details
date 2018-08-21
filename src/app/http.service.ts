@@ -37,7 +37,7 @@ export class HttpService {
   }
 
   public getRegion(region): any {
-    let response = this._http.get(this.baseUrl + '/region/' + region + '?fields=name;alpha3Code;flag;capital;population;currencies;languages');
+    let response = this._http.get(this.baseUrl + '/region/' + region + '?fields=name;alpha3Code;flag;capital;subregion;population;currencies;languages');
     return response
   }
 
