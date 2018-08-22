@@ -19,14 +19,13 @@ h2{
     height: 100%;
     width: 40%;
     background: #fff;
-    /* border: 1px solid red; */
     position: absolute;
     top: 0;
     right: 0;
     transform: skewX(-25deg) translateX(50%);
     -webkit-box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
--moz-box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
-box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
+    box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
 }
 .cover-icon{
     font-size: 3rem;
@@ -72,7 +71,7 @@ box-shadow: inset 13px -1px 28px -12px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 10px -4px rgba(0,0,0,0.75);
-    /* transition: all 0.3s ease */
+    transition: all 0.3s ease
 }
 .header-input:focus{
     outline: none
@@ -88,37 +87,36 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
 }
+/* .americas-col, .europe-col, .asia-col, .africa-col, .oceania-col {
+    outline: 1px solid red
+} */
 .americas-text span,.europe-text span,.africa-text span,.asia-text span,.oceania-text span{
     text-transform: uppercase;
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     /* font-weight: 800; */
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    /* text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; */
 }
 
 .americas-img,.europe-img,.africa-img,.asia-img,.oceania-img{
     filter: grayscale(1);
     transition: all 0.3s ease-in;
     cursor: pointer;
+    z-index: 1;
 }
-
-.americas-col:hover .americas-des{
+.americas-img:hover + .americas-text > .americas-des{
     opacity: 1;
 }
-
-.europe-col:hover .europe-des{
+.europe-img:hover + .europe-text >.europe-des{
     opacity: 1;
 }
-
-.africa-col:hover .africa-des{
+.africa-img:hover + .africa-text > .africa-des{
     opacity: 1;
 }
-
-.asia-col:hover .asia-des{
+.asia-img:hover + .asia-text > .asia-des{
     opacity: 1;
 } 
-
-.oceania-col:hover .oceania-des{
+.oceania-img:hover + .oceania-text > .oceania-des{
     opacity: 1;
 }
 
@@ -130,15 +128,16 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     outline: none
 }
 
-.americas-col{
+.americas-img{
     position: relative;
-    /* background: red */
+    left: 25%
 }
 .americas-text{
     position: absolute;
-    top: 45%;
-    left: 0%;
+    top: 40%;
+    left: 30%;
     color: rgb(0,170,0);
+    z-index: 2
 }
 .americas-des{
     font-size: small;
@@ -149,15 +148,15 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     padding: 1rem 0rem;
     transition: all 0.2s ease-in
 }
-.europe-col{
-    position: relative;
+.europe-img{
     z-index: 2;
 }
 .europe-text{
     position: absolute;
-    top: 40%;
-    left: -20%;
+    top: 21%;
+    left: -12%;
     color: rgb(200,55,113);
+    z-index: 4
 }
 .europe-des{
     font-size: small;
@@ -166,21 +165,19 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     background-color: white;
     border: 1px solid rgb(200,55,113);
     padding: 1rem 0rem;
-    transition: all 0.2s ease-in
-}
-.africa-col{
-    position: relative
+    transition: all 0.2s ease-in;
 }
 .africa-img{
-    position: absolute;
-    top: -100%;
-    left: 10%;
-    z-index: 1
+    position: relative;
+    bottom: 5%; 
+    left: -2%;
+    z-index: 3;
 }
 .africa-text{
     position: absolute;
-    bottom: 40%;
+    bottom: 25%;
     color: rgb(83,103,108);
+    z-index: 3
 }
 .africa-des{
     font-size: small;
@@ -191,18 +188,16 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     padding: 1rem 0rem;
     transition: all 0.2s ease-in
 }
-.asia-col{
-    position: relative;
-}
 .asia-img{
     position: relative;
-    left: -10%;
+    left: -34%;
 }
 .asia-text{
     position: absolute;
-    top: 30%;
-    right: 5%;
+    top: 20%;
+    right: 25%;
     color: rgb(255,153,85);
+    z-index: 2
 }
 .asia-des{
     font-size: small;
@@ -213,19 +208,17 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     padding: 1rem 0rem;
     transition: all 0.2s ease-in
 }
-.oceania-col{
-    position: relative;
-}
 .oceania-img{
     position: relative;
-    top: -30%;
-    left: 10%
+    bottom: 10%;
+    left: 35%;
 }
 .oceania-text{
     position: absolute;
-    top: -20%;
-    left: -35%;
+    bottom: 20%;
+    left: 12%;
     color: rgb(0,170,212);
+    z-index: 2
 }
 .oceania-des{
     font-size: small;
@@ -236,6 +229,7 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     padding: 1rem 0rem;
     transition: all 0.2s ease-in
 }
+
 
 .low-line-height{
     line-height: 0.9rem
