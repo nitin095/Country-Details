@@ -1,3 +1,4 @@
+<div class="spinner" [hidden]='countries'></div>
 <div class="container" *ngIf="countries">
   <div class="row mt-3 justify-content-center text-center">
     <h1 [ngClass]="{'region-name': region,'filter-name': !region}">{{id | languageName | uppercase}}</h1>
