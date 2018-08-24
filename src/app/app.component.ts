@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { faSearch, faTimesCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { HttpService } from './http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,13 @@ export class AppComponent {
   faEnvelope = faEnvelope;
   faGithubSquare = faGithubSquare;
   public search: any;
+  public url: string;
 
-  constructor(public httpService: HttpService) {
+  constructor(private router: Router,public httpService: HttpService) {
     console.log('app component constructor called')
+    router.events.subscribe((val) => {
+      this.url = this.router.url
+    });
   }
 
   getCountry = (search) => {
