@@ -22,20 +22,30 @@ export class LanguageNamePipe implements PipeTransform {
       return 'Russian'
     if (value == 'la')
       return 'Latin'
+    if (value == 'ca')
+      return 'Catalian'
+    if (value == 'gn')
+      return 'Guaraní'
     if (value == 'ar')
       return 'Arabic'
     if (value == 'af')
       return 'Afrikaans'
+    if (value == 'sq')
+      return 'Albanian'
     if (value == 'br')
       return 'Breton'
     if (value == 'pt')
       return 'Portuguese'
     if (value == 'nl')
       return 'Dutch'
+    if (value == 'da')
+      return 'Danish'
     if (value == 'hr')
       return 'Croatian'
     if (value == 'fa')
       return 'Persian'
+    if (value == 'fi')
+      return 'Finnish'
     if (value == 'tk')
       return 'Turkmen'
     if (value == 'ps')
@@ -54,6 +64,10 @@ export class LanguageNamePipe implements PipeTransform {
       return 'Samoan'
     if (value == 'rw')
       return 'Kinyarwanda'
+    if (value == 'sr')
+      return 'Serbian'
+    if (value == 'sv')
+      return 'Swedish'
     if (value == 'sm')
       return 'Samoan'
     if (value == 'ff')
@@ -66,6 +80,8 @@ export class LanguageNamePipe implements PipeTransform {
       return 'Tswana'
     if (value == 'st')
       return 'Southern Sotho'
+    if (value == 'qu')
+      return 'Quechua'
     if (value == 'xh')
       return 'Xhosa'
     if (value == 'zu')

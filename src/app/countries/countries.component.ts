@@ -20,12 +20,15 @@ export class CountriesComponent implements OnInit {
   public highestPopulationCountry: any;
   public languages: any;
   public selectedCurrency: string;
+  public sortField: any;
+  public languageModel: any;
+  public searchInput: any;
 
   constructor(private _route: ActivatedRoute, public router: Router, public httpService: HttpService, private location: Location) { }
 
   ngOnInit() {
     this._route.params.subscribe(params => {
-      this.region = undefined;
+      this.region = this.sortField = this.languageModel = this.searchInput = undefined;
       this.filter = this._route.snapshot.paramMap.get('filter');
       this.id = this._route.snapshot.paramMap.get('id');
       if (this.filter == 'region') {

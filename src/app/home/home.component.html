@@ -1,22 +1,29 @@
-<div class="container-fluid">
+<div class="container-fluid cover-container">
   <div class="row align-items-center" style="height: 90vh">
-    <div class="col cover-logo">
+    <div class="col-12 col-md-6 cover-logo">
       <div class="row align-items-center mx-2" style="height: 100%;">
         <div class="display-1">Country Details</div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-6">
       <div class="row justify-content-center align-items-center text-center" style="height: 100%">
+          <span class="d-none d-xl-block">XTRA LARGE</span>
+        <span class="d-none d-lg-block d-xl-none">LARGE</span>
+        <span class="d-none d-md-block d-lg-none">MEDIUM</span>
+        <span class="d-none d-sm-block d-md-none">SMALL</span>
+        <span class="d-block d-sm-none">XTRA SMALL</span>
         <fa-icon class="cover-icon" [icon]="faGlobe"></fa-icon>
         <div class="col-12 lead cover-text">Get details of any country in the world.</div>
         <small class="col-12">
-          <b class="text-muted">Search by: </b>
-          <span class="search-type" [ngClass]="{'active': isActive('name')}" (click)="makeActive('name')">Name</span>
-          <span class="search-type" [ngClass]="{'active': isActive('alpha')}" (click)="makeActive('alpha')">Country code</span>
-          <span class="search-type" [ngClass]="{'active': isActive('currency')}" (click)="makeActive('currency')">Currency</span>
-          <span class="search-type" [ngClass]="{'active': isActive('lang')}" (click)="makeActive('lang')">Language</span>
-          <span class="search-type" [ngClass]="{'active': isActive('capital')}" (click)="makeActive('capital')">Capital city</span>
-          <span class="search-type" [ngClass]="{'active': isActive('callingcode')}" (click)="makeActive('callingcode')">Calling code</span>
+          <div class="row justify-content-center py-1">
+              <b class="text-muted col-auto">Search by: </b>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('name')}" (click)="makeActive('name')">Name</span>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('alpha')}" (click)="makeActive('alpha')">Country-code</span>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('currency')}" (click)="makeActive('currency')">Currency</span>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('lang')}" (click)="makeActive('lang')">Language</span>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('capital')}" (click)="makeActive('capital')">Capital city</span>
+              <span class="search-type col-auto" [ngClass]="{'active': isActive('callingcode')}" (click)="makeActive('callingcode')">Calling code</span>
+          </div>
         </small>
         <input class="col-10 my-4 header-input" type="text" [(ngModel)]="searchInput" (keyup.enter)="getCountry(activeSearchType,searchInput)" placeholder="Search country by {{getPlaceholderText(activeSearchType)}}">
          <fa-icon class="search-icon" [icon]="faSearch" (click)="getCountry(activeSearchType,searchInput)"></fa-icon>
@@ -57,7 +64,7 @@
     <h2 class="col mt-5">Pick a region to view it's countries</h2>
   </div>
 
-  <div class="row mt-5 map-row">
+  <div class="row mt-5 map-row d-none d-md-flex">
     <div class="col-4 americas-col">
       <img class="img-fluid americas-img" [routerLink]="['/countries','region','americas']" src="../../assets/americas.png">
       <div class="americas-text text-center">
@@ -146,41 +153,41 @@
       
   </div>
 
-  <div class="row align-items-center text-center mt-5 d-lg-none">
+  <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','asia']">
     <div class="col">
-      <div class="display-1">Asia</div>
+      <div class="display-4">Asia</div>
     </div>
     <div class="col">
       <img class="img-fluid" src="../../assets/asia.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5 d-lg-none">
-    <div class="col">
-      <div class="display-1">Africa</div>
-    </div>
+  <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','africa']">
     <div class="col">
       <img class="img-fluid" src="../../assets/africa.png">
     </div>
-  </div>
-  <div class="row align-items-center text-center mt-5 d-lg-none">
     <div class="col">
-      <div class="display-1">Europe</div>
+        <div class="display-4">Africa</div>
+      </div>
+  </div>
+  <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','europe']">
+    <div class="col">
+      <div class="display-4">Europe</div>
     </div>
     <div class="col">
       <img class="img-fluid" src="../../assets/europe.png">
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5 d-lg-none">
+  <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','americas']">
+      <div class="col">
+          <img class="img-fluid" src="../../assets/americas.png">
+        </div>
     <div class="col">
-      <div class="display-1">Americas</div>
-    </div>
-    <div class="col">
-      <img class="img-fluid" src="../../assets/americas.png">
+      <div class="display-4">Americas</div>
     </div>
   </div>
-  <div class="row align-items-center text-center mt-5 d-lg-none">
+  <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','oceania']">
     <div class="col">
-      <div class="display-1">Ocenia</div>
+      <div class="display-4">Ocenia</div>
     </div>
     <div class="col">
       <img class="img-fluid" src="../../assets/oceania.png">

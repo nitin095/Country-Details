@@ -4,13 +4,16 @@
     <div class="col-12" style="position: relative;">
       <img class="img-fluid flag" src="{{country.flag}}" style="height: 45vh;">
     </div>
-    <div class="col-12">
-      <span class="text-uppercase country-name">{{country.name}}</span>
-    </div>
+    
   </div>
 </div>
 
 <div class="container my-5" [ngClass]="{'d-none': !country}">
+  <div class="row name-row justify-content-center">
+    <div class="col-auto mb-3">
+      <span class="text-uppercase name" [ngClass]="{'country-name': country.name.length < 25}">{{country.name}}</span>
+    </div>
+  </div>
   <div class="row justify-content-around">
 
     <div class="col mt-5">
@@ -25,19 +28,6 @@
         </div>
       </div>
     </div>
-    <!-- 
-    <div class="col mt-5">
-      <div class="row text-center align-items-center">
-        <div class="col-12 mb-1" style="line-height: 1rem">
-          <fa-icon [icon]="faGlobe"></fa-icon>
-          <br>
-          <small>Country Code</small>
-        </div>
-        <div class="col-12">
-          <span class="number">{{country.alpha3Code}}</span>
-        </div>
-      </div>
-    </div> -->
 
     <div class="col mt-5">
       <div class="row text-center align-items-center">

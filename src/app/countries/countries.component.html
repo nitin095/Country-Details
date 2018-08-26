@@ -2,7 +2,7 @@
 <div class="container" *ngIf="countries">
   <div class="row mt-3 justify-content-center text-center">
     <h1 [ngClass]="{'region-name': region,'filter-name': !region}">{{id | languageName | uppercase}}</h1>
-    <h2 class="col-12 mt-0" *ngIf="filter == 'language'">Countries with language {{id| languageName}}</h2>
+    <h2 class="col-12 mt-0" *ngIf="filter == 'language'">Countries with language - {{id| languageName}}</h2>
     <h2 class="col-12 mt-0" *ngIf="filter == 'currency'">Countries with currency - {{id}}</h2>
     <h2 class="col-12 mt-0" *ngIf="filter == 'regionalbloc'">Countries with regional bloc - {{id}}</h2>
   </div>
@@ -72,8 +72,8 @@
           <select [(ngModel)]="sortField" (change)="sortBy(sortField)">
             <option value="name">Name A-Z</option>
             <option value="name1">Name Z-A</option>
-            <option value="population">Population Low to high</option>
-            <option value="population1">Popuation High to low</option>
+            <option value="population">Population - Low to high</option>
+            <option value="population1">Popuation - High to low</option>
           </select>
         </div>
         <div class="col-3 search-input" [ngClass]="{active: searchInput}">
@@ -143,11 +143,15 @@
                     {{language.name}}{{last ? '' : ', '}}</span>
               </div>
             </div>
-            <!-- <div class="row mt-2 justify-content-center">
-              <div class="col-auto"> -->
-                  
-              <!-- </div>
-            </div> -->
+            <div class="row no-gutters details-row">
+                <div class="col-4 mr-1 item-title">
+                  Timezones:
+                </div>
+                <div class="col">
+                    <span *ngFor="let timezone of country.timezones;let last=last">
+                      {{timezone}}{{last ? '' : ', '}}</span>
+                </div>
+              </div>
         </div>
         <button [routerLink]="['/country',country.alpha3Code]">View details</button>
       </div>
