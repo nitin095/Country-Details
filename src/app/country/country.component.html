@@ -10,13 +10,13 @@
 
 <div class="container my-5" [ngClass]="{'d-none': !country}">
   <div class="row name-row justify-content-center">
-    <div class="col-auto mb-3">
+    <div class="col-auto name-col mb-3">
       <span class="text-uppercase name" [ngClass]="{'country-name': country.name.length < 25}">{{country.name}}</span>
     </div>
   </div>
   <div class="row justify-content-around">
 
-    <div class="col mt-5">
+    <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faLanguage"></fa-icon>
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="col mt-5">
+    <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="col mt-5">
+    <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faUsers"></fa-icon>
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="col mt-5">
+    <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faMap"></fa-icon>
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div class="col mt-5">
+    <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" [ngClass]="{'mt-2 mb-1': country.currencies[0].symbol}" style="line-height: 1rem">
           <fa-icon [icon]="faCoins" [hidden]="country.currencies[0].symbol"></fa-icon>
@@ -97,11 +97,11 @@
     <div class="col-12">
       <h2>Region</h2>
     </div>
-    <div class="col text-center">
+    <div class="col-12 col-md text-center">
       <!-- <fa-icon [icon]="faGlobeAsia"></fa-icon><br> -->
       <span class="display-4"><span class="hover" [routerLink]="['/countries','region',country.region | lowercase]">{{country.region}}</span>/{{country.subregion}}</span>
     </div>
-    <div class="col-4">
+    <div class="col-12 col-md-4 mt-4 mt-md-auto">
       <div class="region-img-container">
         <img class="img-fluid region-img" src="../../assets/{{country.region | lowercase }}.png" alt="{{country.region | lowercase }}"
           style="height: 40vh">
@@ -114,7 +114,7 @@
     <div class="col-12">
       <h2>Borders</h2>
     </div>
-    <div class="col-2 lead text-center border-col my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
+    <div class="col-4 col-md-2 lead text-center border-col my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
       <img class="img-fluid border-flag mb-3" src="https://restcountries.eu/data/{{border.code | lowercase}}.svg">
       <br>
       <div class="low-line-height"><b><small>{{border.name}}</small></b></div>
@@ -127,7 +127,7 @@
     <div class="col-12">
       <h2>Translations</h2>
     </div>
-    <div class="col-2 lead text-center my-4" *ngFor="let translation of translations">
+    <div class="col-4 col-md-2 lead text-center my-4" *ngFor="let translation of translations">
       <b>{{translation.translation}}</b>
       <br>
       <small class="text-muted lang-name">{{translation.lang | languageName}}</small>
@@ -139,9 +139,9 @@
     <div class="col-12">
       <h2>Regional Blocs</h2>
     </div>
-    <div class="col-6 my-4 bloc-row" *ngFor="let bloc of country.regionalBlocs" [routerLink]="['/countries','regionalbloc',bloc.acronym]">
+    <div class="col-12 col-md-6 my-4 bloc-row" *ngFor="let bloc of country.regionalBlocs" [routerLink]="['/countries','regionalbloc',bloc.acronym]">
       <div class="row">
-        <div class="col-2 text-center acronym">
+        <div class="col-12 col-md-2 text-md-center acronym">
           <b>{{bloc.acronym}}</b>
         </div>
         <div class="col-10 low-line-height">
@@ -164,7 +164,7 @@
       <h2>Other Details</h2>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.topLevelDomain">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.topLevelDomain">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Top Level Domain</b>
@@ -173,7 +173,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.callingCodes[0]">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.callingCodes[0]">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Calling Codes</b>
@@ -184,7 +184,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1">
+    <div class="col-12 col-md-6 my-1">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Alpha 2 Code</b>
@@ -193,7 +193,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1">
+    <div class="col-12 col-md-6 my-1">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Alpha 3 Code</b>
@@ -204,7 +204,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.demonym">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.demonym">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Demonym</b>
@@ -215,7 +215,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.gini">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.gini">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>GINI Index</b>
@@ -226,7 +226,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.nativeName">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.nativeName">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Native Name</b>
@@ -237,7 +237,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.numericCode">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.numericCode">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Numeric Code</b>
@@ -248,7 +248,7 @@
       </div>
     </div>
 
-    <div class="col-6 my-1" *ngIf="country.cioc">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.cioc">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Cioc</b>
@@ -259,9 +259,9 @@
       </div>
     </div>
 
-    <div class="col-auto my-1">
+    <div class="col-12 col-md-auto my-1">
       <div class="row align-items-center">
-        <div class="col-auto pt-2 text-right text-muted p-0 pr-3">
+        <div class="col-3 col-auto pt-2 text-right text-muted p-0 pr-3">
           <b>Latitude and longitude</b>
         </div>
         <div class="col display-4">

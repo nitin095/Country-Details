@@ -92,10 +92,21 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
     cursor: pointer;
 }
 .map-row-md img{
-    max-height: 80%;
+    max-height: 35vh;
 }
 .map-row-md:nth-child(even){
     background: whitesmoke;
+}
+.detail-col{
+    margin-top: 1rem;
+    line-height: 1.2rem
+}
+.detail-col span{
+    font-size: 1.2rem
+}
+.detail-col fa-icon{
+    font-size: 1.5rem;
+    color: #008793
 }
 /* .americas-col, .europe-col, .asia-col, .africa-col, .oceania-col {
     outline: 1px solid red
@@ -336,7 +347,6 @@ box-shadow: 0px 2px 12px -3px rgba(0,0,0,0.75);
  
  /*medium devices*/
  @media screen and (min-width: 768px) and (max-width: 991px) {
-    
     .cover-logo{
         -webkit-box-shadow: 3px 0px 27px -4px rgba(0,0,0,0.75);
 -moz-box-shadow: 3px 0px 27px -4px rgba(0,0,0,0.75);
@@ -344,6 +354,11 @@ box-shadow: 3px 0px 27px -4px rgba(0,0,0,0.75);
     }
     .cover-logo::after{
         display: none
+    }
+    
+    .cover-logo .display-1{
+        font-size: 5rem;
+        letter-spacing: -5px;
     }
  }
  

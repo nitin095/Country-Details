@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faGlobe, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faSearch, faUsers, faMap } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from '../http.service';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 
   faGlobe = faGlobe;
   faSearch = faSearch;
+  faUsers = faUsers;
+  faMap = faMap;
   public activeSearchType: string;
   public searchResult: any;
   public searchText: string;

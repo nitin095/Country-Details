@@ -5,38 +5,39 @@
     <h2 class="col-12 mt-0" *ngIf="filter == 'language'">Countries with language - {{id| languageName}}</h2>
     <h2 class="col-12 mt-0" *ngIf="filter == 'currency'">Countries with currency - {{id}}</h2>
     <h2 class="col-12 mt-0" *ngIf="filter == 'regionalbloc'">Countries with regional bloc - {{id}}</h2>
+    <div class="col-12">
+        <img *ngIf="region" class="img-fluid region-img d-block mx-auto" src="../../assets/{{region}}-header.png" [ngClass]="{'mt-3': region == 'americas' || region == 'oceania'}">
+    </div>
   </div>
-  <img *ngIf="region" class="img-fluid d-block mx-auto" src="../../assets/{{region}}-header.png" [ngClass]="{'mt-3': region == 'americas' || region == 'oceania'}"
-    style="height:50vh">
 
   <div class="row justify-content-center my-5">
-    <div class="col text-center">
+    <div class="col-6 col-md text-center">
       <div class="row">
         <div class="col-12 display-4">{{countries.length}}</div>
         <small class="col-12">Number of countries</small>
       </div>
     </div>
-    <div class="col text-center">
+    <div class="col-6 col-md text-center">
       <div class="row">
         <div class="col-12 display-4">{{highestPopulationCountry.population | numberToMB }}</div>
         <div class="col-12">{{highestPopulationCountry.name}}</div>
         <small class="col-12">Highest population country</small>
       </div>
     </div>
-    <div class="col text-center">
+    <div class="col-6 col-md text-center">
       <div class="row">
         <div class="col-12 display-4">{{population | numberToMB}}</div>
         <small class="col-12">Overall population</small>
       </div>
     </div>
-    <div class="col text-center">
+    <div class="col-6 col-md text-center">
       <div class="row">
         <div class="col-12 display-4">{{lowestPopulationCountry.population | numberToMB }}</div>
         <div class="col-12">{{lowestPopulationCountry.name}}</div>
         <small class="col-12">Lowest population country</small>
       </div>
     </div>
-    <div class="col text-center" *ngIf="region">
+    <div class="col-6 col-md text-center" *ngIf="region">
       <div class="row">
         <div class="col-12 display-4">{{languages.size}}</div>
         <small class="col-12">Languages spoken</small>
@@ -48,7 +49,7 @@
     <div class="col-12">
       <h2>Languages</h2>
     </div>
-    <div class="col-auto lead hover" *ngFor="let lang of languages" (click)="languageModel = lang">
+    <div class="col-4 col-md-auto my-2 lead hover" *ngFor="let lang of languages" (click)="languageModel = lang" style="line-height: 1.2rem">
       {{lang}}
     </div>
   </div>
@@ -59,14 +60,14 @@
     </div>
     <div class="col-12">
       <div class="row justify-content-end px-5 pt-2 pb-3">
-        <div class="col-3 sort" [ngClass]="{active: languageModel}" *ngIf="region">
+        <div class="col-6 col-md-3 sort" [ngClass]="{active: languageModel}" *ngIf="region">
           <small class="text-uppercase">Filter by language</small>
           <br>
           <select [(ngModel)]="languageModel">
             <option *ngFor="let language of languages" value="{{language}}">{{language}}</option>
           </select>
         </div>
-        <div class="col-3 sort" [ngClass]="{active: sortField}">
+        <div class="col-6 col-md-3 sort" [ngClass]="{active: sortField}">
           <small class="text-uppercase">Sort by</small>
           <br>
           <select [(ngModel)]="sortField" (change)="sortBy(sortField)">
@@ -76,12 +77,12 @@
             <option value="population1">Popuation - High to low</option>
           </select>
         </div>
-        <div class="col-3 search-input" [ngClass]="{active: searchInput}">
+        <div class="col-6 col-md-3 search-input" [ngClass]="{active: searchInput}">
           <small class="text-uppercase">Search</small>
           <br>
           <input type="text" [(ngModel)]="searchInput" placeholder="Search country">
         </div>
-        <div class="col-auto align-self-center">
+        <div class="col-6 col-md-auto align-self-center">
           <button class="reset-btn" (click)="sortBy('name');searchInput=sortField=languageModel=undefined">Reset filters</button>
         </div>
         <div class="col-12" *ngIf="selectedCurrency">
