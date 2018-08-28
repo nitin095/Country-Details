@@ -8,14 +8,14 @@
   </div>
 </div>
 
-<div class="container my-5" [ngClass]="{'d-none': !country}">
-  <div class="row name-row justify-content-center">
-    <div class="col-auto name-col mb-3">
-      <span class="text-uppercase name" [ngClass]="{'country-name': country.name.length < 25}">{{country.name}}</span>
+<div class="container my-5" [ngClass]="{'d-none': !country}" *ngIf="country">
+  <div class="row no-gutters name-row justify-content-center">
+    <div class="col text-center mb-3">
+      <span class="text-uppercase name" [ngClass]="{'country-name': country.name.length > 14}">{{country.name}}</span>
     </div>
   </div>
-  <div class="row justify-content-around">
 
+  <div class="row justify-content-around">
     <div class="col-4 col-md mt-5">
       <div class="row text-center align-items-center">
         <div class="col-12 mb-1" style="line-height: 1rem">
@@ -261,7 +261,7 @@
 
     <div class="col-12 col-md-auto my-1">
       <div class="row align-items-center">
-        <div class="col-3 col-auto pt-2 text-right text-muted p-0 pr-3">
+        <div class="col-4 col-lg-auto pt-2 text-right text-muted p-0 pr-3">
           <b>Latitude and longitude</b>
         </div>
         <div class="col display-4">
@@ -272,10 +272,10 @@
 
     <div class="col-12 my-1" *ngIf="country.timezones">
       <div class="row align-items-center justify-content-end">
-        <div class="col-2 pt-2 text-right text-muted">
+        <div class="col-4 col-md-2 pt-2 text-right text-muted">
           <b>Timezone</b>
         </div>
-        <div class="col-10 display-4" *ngFor="let timezone of country.timezones">
+        <div class="col display-4" *ngFor="let timezone of country.timezones">
           {{timezone}}
         </div>
       </div>

@@ -25,17 +25,17 @@
 
 <div class="container-fluid search-result-container" *ngIf="search">
   <div class="row justify-content-end">
-    <div class="col-3 card">
+    <div class="col-5 col-md-3 card">
       <div class="row justify-content-between align-items-center">
         <h2 class="col-auto lead pt-2">Results</h2>
         <fa-icon class="col-auto search-close-button" [icon]="faTimesCircle" (click)="search=searchInput=undefined"></fa-icon>
       </div>
       <div class="row py-2 align-items-center search-result-item" *ngFor="let country of search" [routerLink]="['/country',country.alpha3Code]"
         (click)="search=undefined">
-        <div class="col-3">
+        <div class="col-12 col-md-3">
           <img class="img-fluid" src="{{country.flag}}">
         </div>
-        <div class="col-9">{{country.name}}</div>
+        <div class="col-12 col-md-9">{{country.name}}</div>
       </div>
     </div>
   </div>
