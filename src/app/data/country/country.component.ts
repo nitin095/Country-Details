@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { HttpService} from '../http.service';
+import { HttpService } from '../../http.service';
 import { faLanguage, faUsers, faMap, faCoins, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -21,9 +21,7 @@ export class CountryComponent implements OnInit {
   public bordersName: any;
   public translations: any = [];
 
-  constructor(private _route: ActivatedRoute, public router: Router, public httpService: HttpService, private location: Location) { 
-
-  }
+  constructor(private _route: ActivatedRoute, public router: Router, public httpService: HttpService, private location: Location) { }
 
   ngOnInit() {
     this._route.params.subscribe(params => {
@@ -65,3 +63,4 @@ export class CountryComponent implements OnInit {
   }
 
 }
+

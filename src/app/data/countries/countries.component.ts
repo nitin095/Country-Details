@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { HttpService } from '../http.service'
+import { HttpService } from '../../http.service'
 
 @Component({
   selector: 'app-countries',
