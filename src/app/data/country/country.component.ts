@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpService } from '../../http.service';
 import { faLanguage, faUsers, faMap, faCoins, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { CountryData } from './../../CountryData';
+import { Translation } from './translation';
+import { Border } from './border'
 
 @Component({
   selector: 'app-country',
@@ -10,7 +13,7 @@ import { faLanguage, faUsers, faMap, faCoins, faMapMarkedAlt } from '@fortawesom
   styleUrls: ['./country.component.css'],
   providers: [Location]
 })
-export class CountryComponent implements OnInit {
+export class CountryComponent implements OnInit, CountryData {
 
   faLanguage = faLanguage;
   faUsers = faUsers;
@@ -25,42 +28,55 @@ export class CountryComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe(params => {
-    let countryCode = this._route.snapshot.paramMap.get('code');
-    this.translations = new Array;
-    this.httpService.getCountry(countryCode).subscribe(
+      let countryCode = this._route.snapshot.paramMap.get('code');
+      this.translations = new Array;
+      this.getCountry(countryCode)
+    });
+  }
+  // end ngOnInit
+
+  public getCountry: any = (code) => {
+    this.httpService.getCountry(code).subscribe(
       data => {
         this.country = data;
         console.log(data)
         //stroing translations object key value pairs in array as ngFor can't iterate over objects
-        for (let language of Object.keys(this.country.translations)){
-            this.translations.push({ lang: language, translation: this.country.translations[language]})
+        for (let language of Object.keys(this.country.translations)) {
+          let translationObj: Translation = {
+            lang: language,
+            translation: this.country.translations[language]
           }
-      console.log(this.translations)
-      this.getBordersName(this.country.borders)
+          this.translations.push(translationObj)
+        }
+        this.getBordersName(this.country.borders)
       },
       error => {
         console.log(error.errorMessage)
       }
     );
-  });
   }
-  // end ngOnInit
+  // end getCountry
 
-  getBordersName = (borders) => {
+  public getBordersName: any = (borders) => {
     this.bordersName = new Array;
-    for(let border of borders){
+    for (let border of borders) {
       this.httpService.getCountry(border).subscribe(
         data => {
-          this.bordersName.push({name: data.name, code: data.alpha3Code})
+          let borderObj: Border = {
+            name: data.name,
+            code: data.alpha3Code
+          }
+          this.bordersName.push(borderObj)
         },
         error => {
           console.log(error.errorMessage)
         }
-      )      
+      )
     }
     // end for
     console.log(this.bordersName)
   }
+  // end getBordersName
 
 }
 

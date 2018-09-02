@@ -4,7 +4,7 @@
     <div class="col-12" style="position: relative;">
       <img class="img-fluid flag" src="{{country.flag}}" style="height: 45vh;">
     </div>
-    
+
   </div>
 </div>
 
@@ -21,7 +21,9 @@
         <div class="col-12 mb-1" style="line-height: 1rem">
           <fa-icon [icon]="faLanguage"></fa-icon>
           <br>
-          <small>Language<span *ngIf="country.languages.length > 1">s</span></small>
+          <small>Language
+            <span *ngIf="country.languages.length > 1">s</span>
+          </small>
         </div>
         <div class="col-12">
           <span class="number hover" *ngFor="let language of country.languages; let last=last" [routerLink]="['/countries','language',language.iso639_1]">{{language.name}}{{last ? '' : ', '}}</span>
@@ -63,7 +65,9 @@
           <small>Area</small>
         </div>
         <div class="col-12">
-          <span class="number">{{country.area | numberToMB}} Km<sup>2</sup></span>
+          <span class="number">{{country.area | numberToMB}} Km
+            <sup>2</sup>
+          </span>
         </div>
       </div>
     </div>
@@ -99,7 +103,8 @@
     </div>
     <div class="col-12 col-md text-center">
       <!-- <fa-icon [icon]="faGlobeAsia"></fa-icon><br> -->
-      <span class="display-4"><span class="hover" [routerLink]="['/countries','region',country.region | lowercase]">{{country.region}}</span>/{{country.subregion}}</span>
+      <span class="display-4">
+        <span class="hover" [routerLink]="['/countries','region',country.region | lowercase]">{{country.region}}</span>/{{country.subregion}}</span>
     </div>
     <div class="col-12 col-md-4 mt-4 mt-md-auto">
       <div class="region-img-container">
@@ -117,7 +122,11 @@
     <div class="col-4 col-md-2 lead text-center border-col my-4" *ngFor="let border of bordersName" [routerLink]="['/country',border.code]">
       <img class="img-fluid border-flag mb-3" src="https://restcountries.eu/data/{{border.code | lowercase}}.svg">
       <br>
-      <div class="low-line-height"><b><small>{{border.name}}</small></b></div>
+      <div class="low-line-height">
+        <b>
+          <small>{{border.name}}</small>
+        </b>
+      </div>
     </div>
     <div class="col-12 lead" [hidden]="country.borders[0]">{{country.name}} has no borders</div>
   </div>
@@ -164,7 +173,7 @@
       <h2>Other Details</h2>
     </div>
 
-    <div class="col-12 col-md-6 my-1" *ngIf="country.topLevelDomain">
+    <div class="col-12 col-md-6 my-1" *ngIf="country.topLevelDomain != ''">
       <div class="row align-items-center">
         <div class="col-4 pt-2 text-right text-muted">
           <b>Top Level Domain</b>
@@ -275,8 +284,8 @@
         <div class="col-4 col-md-2 pt-2 text-right text-muted">
           <b>Timezone</b>
         </div>
-        <div class="col display-4" *ngFor="let timezone of country.timezones">
-          {{timezone}}
+        <div class="col-8 col-md-10 display-4" *ngFor="let timezone of country.timezones">
+        {{timezone}}
         </div>
       </div>
     </div>

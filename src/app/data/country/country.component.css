@@ -33,7 +33,7 @@ h2{
 }
 .country-name{
     font-size: 2rem;
-    padding: 0;
+    padding: 0px 20px;
     
 }
 /* .country-name:before{

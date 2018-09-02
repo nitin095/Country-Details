@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { faGlobe, faSearch, faUsers, faMap } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from '../http.service';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+import { CountryData } from './../countryData';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+
+export class HomeComponent implements OnInit, CountryData {
 
   faGlobe = faGlobe;
   faSearch = faSearch;
@@ -18,24 +20,22 @@ export class HomeComponent implements OnInit {
   public searchResult: any;
   public searchText: string;
 
-  constructor(public httpService: HttpService, private _scrollToService: ScrollToService) {
-    console.log('home component constructor called')
-  }
+  constructor(public httpService: HttpService, private _scrollToService: ScrollToService) { }
 
   ngOnInit() {
     this.activeSearchType = 'name';
   }
 
-  isActive = (type) => {
+  public isActive: any = (type): boolean => {
     if (this.activeSearchType == type)
       return true
   }
 
-  makeActive = (type) => {
+  public makeActive: any = (type) => {
     this.activeSearchType = type
   }
 
-  getPlaceholderText = (type) => {
+  public getPlaceholderText: any = (type): string => {
     if (type == 'name')
       return 'name'
     if (type == 'alpha')
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       return `calling code. Eg. '91' for India`
   }
 
-  getCountry = (searchType, search) => {
+  public getCountry: any = (searchType, search) => {
     this.setSearchText(searchType, search);
     this.httpService.getCountryBySearch(searchType, search).subscribe(
       data => {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   }
   // end getCountry
 
-  setSearchText = (type, search) => {
+  public setSearchText: any = (type, search) => {
     if (type == 'alpha')
       this.searchText = `country code "${search}"`
     else if (type == 'lang')

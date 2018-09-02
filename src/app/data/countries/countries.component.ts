@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { HttpService } from '../../http.service'
+import { HttpService } from '../../http.service';
+import { CountriesData } from './countriesData';
+import { Population } from './population'
 
 @Component({
   selector: 'app-countries',
@@ -9,15 +11,15 @@ import { HttpService } from '../../http.service'
   styleUrls: ['./countries.component.css'],
   providers: [Location]
 })
-export class CountriesComponent implements OnInit {
+export class CountriesComponent implements OnInit, CountriesData {
 
   public filter: string;
   public id: any;
   public region: string;
   public countries: any;
   public population: number;
-  public lowestPopulationCountry: any;
-  public highestPopulationCountry: any;
+  public lowestPopulationCountry: Population;
+  public highestPopulationCountry: Population;
   public languages: any;
   public selectedCurrency: string;
   public sortField: any;
@@ -33,68 +35,90 @@ export class CountriesComponent implements OnInit {
       this.id = this._route.snapshot.paramMap.get('id');
       if (this.filter == 'region') {
         this.region = this.id;
-        this.httpService.getRegion(this.region).subscribe(
-          data => {
-            this.countries = data;
-            this.getStats(this.countries);
-          },
-          error => {
-            console.log(error.errorMessage)
-          }
-        )
-      }else if (this.filter == 'language') {
+        this.getRegion();
+      } else if (this.filter == 'language') {
         console.log('language filter')
-        this.httpService.getAllCountriesWithLanguage(this.id).subscribe(
-          data => {
-            this.countries = data;
-            this.getStats(this.countries);
-          },
-          error => {
-            console.log(error.errorMessage)
-          }
-        )
+        this.getAllCountriesWithLanguage()
       } else if (this.filter == 'currency') {
         console.log('currency filter')
-        this.httpService.getAllCountriesWithCurrency(this.id).subscribe(
-          data => {
-            this.countries = data;
-            this.getStats(this.countries);
-          },
-          error => {
-            console.log(error.errorMessage)
-          }
-        )
+        this.getAllCountriesWithCurrency()
       } else {
         console.log('bloc filter')
-        this.httpService.getAllCountriesWithBloc(this.id).subscribe(
-          data => {
-            this.countries = data;
-            this.getStats(this.countries);
-          },
-          error => {
-            console.log(error.errorMessage)
-          }
-        )
+        this.getAllCountriesWithBloc()
       }
     });
   }
   // end ngOnInit
 
-  getStats = (countries: any) => {
+  public getRegion: any = () => {
+    this.httpService.getRegion(this.region).subscribe(
+      data => {
+        this.countries = data;
+        this.getStats(this.countries);
+      },
+      error => {
+        console.log(error.errorMessage)
+      }
+    )
+  }
+  // end getRegion
+
+  public getAllCountriesWithLanguage: any = () => {
+    this.httpService.getAllCountriesWithLanguage(this.id).subscribe(
+      data => {
+        this.countries = data;
+        this.getStats(this.countries);
+      },
+      error => {
+        console.log(error.errorMessage)
+      }
+    )
+  }
+  // end getAllCountriesWithLanguage
+
+  public getAllCountriesWithCurrency: any = () => {
+    this.httpService.getAllCountriesWithCurrency(this.id).subscribe(
+      data => {
+        this.countries = data;
+        this.getStats(this.countries);
+      },
+      error => {
+        console.log(error.errorMessage)
+      }
+    )
+  }
+  // end getAllCountriesWithCurrency
+
+  public getAllCountriesWithBloc: any = () => {
+    this.httpService.getAllCountriesWithBloc(this.id).subscribe(
+      data => {
+        this.countries = data;
+        this.getStats(this.countries);
+      },
+      error => {
+        console.log(error.errorMessage)
+      }
+    )
+  }
+  // end getAllCountriesWithBloc
+
+  public getStats: any = (countries: any) => {
     this.population = 0;
     let maxPopulation = Math.max(...countries.map(o => o.population));
     let minPopulation = Math.min(...countries.map(c => c.population));
-    let allLanguages = [];
+    let allLanguages: Array<string> = [];
     for (let country of countries) {
       this.population += country.population;
       for (let l of country.languages) {
         allLanguages.push(l.name);
       }
       if (country.population == maxPopulation) {
-        this.highestPopulationCountry = { name: country.name, population: maxPopulation }
+        let highestPopulation: Population = { name: country.name, population: maxPopulation }
+        this.highestPopulationCountry = highestPopulation
       }
       if (country.population == minPopulation) {
-        this.lowestPopulationCountry = { name: country.name, population: minPopulation }
+        let lowestPopulation: Population = { name: country.name, population: minPopulation }
+        this.lowestPopulationCountry = lowestPopulation
       }
     }
     this.languages = new Set(allLanguages)
@@ -102,7 +126,7 @@ export class CountriesComponent implements OnInit {
   }
   // end getStats
 
-  sortBy = (field: string) => {
+  public sortBy: any = (field: string) => {
     if (this.countries.length > 1) {
       if (field.endsWith('1')) {
         field = field.slice(0, -1);
@@ -122,3 +146,4 @@ export class CountriesComponent implements OnInit {
   }//end sortBy
 
 }
+// end class CountriesComponent
