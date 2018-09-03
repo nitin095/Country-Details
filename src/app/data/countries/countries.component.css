@@ -180,6 +180,9 @@ h2{
         max-height: 25vh;
         margin-top: 4vh
     }
+    .filter-name{
+        font-size: 4rem
+    }
 }
 
 /*small devices*/
