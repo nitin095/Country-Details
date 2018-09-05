@@ -9,6 +9,7 @@ import { NumberToMBPipe } from '../number-to-mb.pipe';
 import { SearchPipe } from '../search.pipe';
 import { LanguageNamePipe } from '../language-name.pipe';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forChild([
       { path: 'country/:code', component: CountryComponent},
       { path: 'countries/:filter/:id', component: CountriesComponent}
-    ])
+    ]),
+    SharedModule
   ],
   declarations: [
     CountryComponent,

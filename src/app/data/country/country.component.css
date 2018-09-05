@@ -3,6 +3,16 @@ h2{
     text-transform: uppercase;
     margin-top: 1rem 
 }
+.country-back-btn{
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    padding: 0.5rem 1rem;
+    z-index: 1
+}
+.country-back-btn:hover{
+    background: rgba(0,0,0,0.25);
+}
 .flag{
     position: relative;
     bottom: -15%;
@@ -44,6 +54,7 @@ h2{
     top: 0;
 } */
 .header{
+    position: relative;
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     -webkit-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
 -moz-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
