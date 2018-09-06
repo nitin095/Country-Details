@@ -8,7 +8,8 @@ h2{
     top: 25px;
     left: 35px;
     padding: 0.5rem 1rem;
-    z-index: 1
+    z-index: 1;
+    transition: all 0.3s ease
 }
 .country-back-btn:hover{
     background: rgba(0,0,0,0.25);
@@ -134,12 +135,19 @@ hr{
 
 /*extra small devices*/
 @media screen and (max-width: 575px) {    
-
+    
+    .country-back-btn{
+        top: 0px;
+        left: 5px;
+    }
 }
 
 /*small devices*/
 @media screen and (min-width: 576px) and (max-width: 767px) {
-    
+    .country-back-btn{
+        top: 5px;
+        left: 0px;
+    }
  }
  
  /*medium devices*/
