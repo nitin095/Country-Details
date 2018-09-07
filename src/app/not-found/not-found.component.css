@@ -1,0 +1,16 @@
+h1{
+    word-spacing: 15px
+}
+.button{
+    padding: 1.5rem 2rem;
+    color: silver;
+    background-color: #004d7a;
+    cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out
+}
+.button:hover{
+    color: #008793;
+    background-color: rgba(168, 235, 18, 0.3)
+}

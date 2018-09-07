@@ -9,11 +9,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { DataModule } from './data/data.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -25,10 +27,11 @@ import { DataModule } from './data/data.module';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '*', component: HomeComponent }
+      { path: '**', component: NotFoundComponent }
     ])
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
