@@ -11,6 +11,7 @@ import { Population } from './population'
   styleUrls: ['./countries.component.css'],
   providers: [Location]
 })
+
 export class CountriesComponent implements OnInit, CountriesData {
 
   public filter: string;

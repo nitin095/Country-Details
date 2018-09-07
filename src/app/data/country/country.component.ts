@@ -13,6 +13,7 @@ import { Border } from './border'
   styleUrls: ['./country.component.css'],
   providers: [Location]
 })
+
 export class CountryComponent implements OnInit, CountryData {
 
   faLanguage = faLanguage;
@@ -74,9 +75,9 @@ export class CountryComponent implements OnInit, CountryData {
       )
     }
     // end for
-    console.log(this.bordersName)
   }
   // end getBordersName
 
 }
+// end class CountryComponent
 

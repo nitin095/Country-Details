@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
 import { Observable } from "rxjs";
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpService {
 
   public baseUrl = "https://restcountries.eu/rest/v2";
@@ -46,7 +45,7 @@ export class HttpService {
     return response
   }
 
-  public getCountryBySearch(searchType,search): any {
+  public getCountryBySearch(searchType, search): any {
     let response = this._http.get(`${this.baseUrl}/${searchType}/${search}?fields=name;alpha3Code;flag;subregion`);
     return response
   }

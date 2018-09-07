@@ -1,3 +1,4 @@
+<!-- cover container -->
 <div class="container-fluid cover-container">
   <div class="row align-items-center" style="height: 90vh">
     <div class="col-12 col-md-6 cover-logo">
@@ -28,6 +29,7 @@
     </div>
   </div>
 </div>
+<!-- end cover-container -->
 
 <!-- search results container -->
 <div id="result" class="container my-5 search-results-container">
@@ -59,6 +61,7 @@
 </div>
 <!-- end search results container -->
 
+<!-- regions container -->
 <div class="container my-5">
   <div class="row">
     <h2 class="col mt-5">Pick a region to view it's countries</h2>
@@ -82,7 +85,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="col-3 europe-col" style="z-index: 2;">
       <img class="img-fluid europe-img" [routerLink]="['/countries','region','europe']" src="assets/europe.png">
@@ -115,8 +117,8 @@
         </div>
         <span>Africa</span>
       </div>
-
     </div>
+
     <div class="col-5 asia-col">
       <img class="img-fluid asia-img" [routerLink]="['/countries','region','asia']" src="assets/asia.png">
       <div class="asia-text text-center">
@@ -148,10 +150,10 @@
         </div>
         <span>Oceania</span>
       </div>
-
     </div>
 
   </div>
+  <!-- end row -->
 
   <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','asia']">
     <div class="col">
@@ -183,6 +185,7 @@
       <img class="img-fluid" src="assets/asia.png">
     </div>
   </div>
+
   <div class="row align-items-center map-row-md text-center mt-5 d-md-none" [routerLink]="['/countries','region','africa']">
     <div class="col">
       <img class="img-fluid" src="assets/africa.png">
@@ -305,8 +308,9 @@
   </div>
 
 </div>
-<!-- end container -->
+<!-- end regions container -->
 
+<!-- regional bloc container -->
 <div class="container my-5">
   <div class="row">
     <h2 class="col mt-5">Countries by regional bloc</h2>
@@ -407,4 +411,4 @@
   </div>
   <!-- end row -->
 </div>
-<!-- end container -->
+<!-- end regional container container -->

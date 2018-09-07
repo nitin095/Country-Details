@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
   title = 'app';
   faSearch = faSearch;
   faTimesCircle = faTimesCircle;
@@ -18,7 +20,7 @@ export class AppComponent {
   public search: any;
   public url: string;
 
-  constructor(private router: Router,public httpService: HttpService) {
+  constructor(private router: Router, public httpService: HttpService) {
     console.log('app component constructor called')
     router.events.subscribe((val) => {
       this.url = this.router.url
@@ -28,7 +30,7 @@ export class AppComponent {
   getCountry = (search) => {
     this.httpService.getCountryBySearch('name', search).subscribe(
       data => {
-          this.search = data;
+        this.search = data;
         console.log(this.search)
       },
       error => {
@@ -40,4 +42,4 @@ export class AppComponent {
   // end getCountry
 
 }
-
+// end class AppComponent

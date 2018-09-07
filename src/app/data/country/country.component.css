@@ -47,19 +47,12 @@ h2{
     padding: 0px 20px;
     
 }
-/* .country-name:before{
-    content: "";
-    width: 100%;
-    height: 80%;
-    position: absolute;
-    top: 0;
-} */
 .header{
     position: relative;
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-    -webkit-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
--moz-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
+    -webkit-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);   
+    -moz-box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -37px 172px -72px rgba(0,0,0,0.75);
 }
 
 .number{
@@ -79,18 +72,15 @@ fa-icon{
     filter: grayscale(0.5);
     transform: scale(0.9)
 }
-.region-img-container{
-    /* border: 1px solid black; */
-    border-radius: 100%;
+.region-img-container{border-radius: 100%;
     padding: 2rem 1rem;
-    background-image: linear-gradient(to right top, #72b6f9, #78c1fb, #81cbfd, #8cd5fe, #9adfff);
-    /* background-image: linear-gradient(to right top, #60a6eb, #57abf1, #4cb0f6, #3eb6fb, #2abbff); */
+    background-image: linear-gradient(to right top, #72b6f9, #78c1fb, #81cbfd, #8cd5fe, #9adfff)
 }
 .border-flag{
     height: 10vh;
     -webkit-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 10px -2px rgba(0,0,0,0.75);
 }
 .low-line-height{
     line-height: 1.2rem
@@ -150,16 +140,3 @@ hr{
     }
  }
  
- /*medium devices*/
- @media screen and (min-width: 768px) and (max-width: 991px) {
-   
- }
- 
- /*large devices*/
- @media screen and (min-width: 992px) and (max-width: 1199px) {
-    
- }
-  
- @media screen and (min-width: 1200px) {
- 
- }

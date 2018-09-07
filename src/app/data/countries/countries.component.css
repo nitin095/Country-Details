@@ -28,30 +28,30 @@
 .card{
     -webkit-box-shadow: 0px 2px 8px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 8px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 8px -4px rgba(0,0,0,0.75);  
+    box-shadow: 0px 2px 8px -4px rgba(0,0,0,0.75);
     transition: all 0.5s ease;
-    padding-bottom: 0px!important
+    padding-bottom: 0px!important 
 }
 .card:hover{
     -webkit-box-shadow: 0px 2px 15px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 15px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 15px -4px rgba(0,0,0,0.75);  
+    box-shadow: 0px 2px 15px -4px rgba(0,0,0,0.75);
 }
 .card-text{
-    line-height: 1rem
+    line-height: 1rem 
 }
 .item-title{
     color: #008793;
-    font-weight: 500
+    font-weight: 500 
 }
 .card .lead{
-    font-weight: 500
+    font-weight: 500 
 }
 .card .details-row{
-    font-size: small
+    font-size: small 
 }
 .card:hover button{
-    display: block
+    display: block 
 }
 .card button{
     display: none;
@@ -66,22 +66,22 @@
     font-size: small;
     letter-spacing: 1px;
     font-weight: 500;
-    transition: all 0.5s ease
+    transition: all 0.5s ease 
 }
 .card button:hover{
     border: 1px solid #00bf72;
     background: #00bf72;
     color: #fff;
-    font-weight: 500
+    font-weight: 500 
 }
 .country-code-col::before{
-  content: "";
-  width: 100%;
-  position: absolute;
-  top: 55%;
-  right: 0;
-  border-top: 1px solid lightgrey;
-  z-index: 1
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 55%;
+    right: 0;
+    border-top: 1px solid lightgrey;
+    z-index: 1 
 }
 .country-code-col > small{
     background: white;
@@ -89,8 +89,7 @@
     font-weight: bold;
     z-index: 2;
     position: relative;
-    padding: 0rem 1rem
-
+    padding: 0rem 1rem 
 }
 h2{
     font-family: 'Poppins', sans-serif;
@@ -100,46 +99,46 @@ h2{
 }
 .search-input small{
     font-weight: 700;
-    letter-spacing: 1px
+    letter-spacing: 1px 
 }
 .search-input input{
     border: none;
     border-bottom: 1px solid black;
-    width: 100%
+    width: 100% 
 }
 .search-input input:focus{
-    outline: none
+    outline: none 
 }
 .search-input{
     border: 2px solid transparent;
     padding-bottom: 0.3rem;
-    line-height: 1rem
+    line-height: 1rem 
 }
 .search-input.active{
-    background: whitesmoke
+    background: whitesmoke 
 }
 .search-input.active input{
-    background: none
+    background: none 
 }
 .sort small{
     font-weight: 700;
-    letter-spacing: 1px
+    letter-spacing: 1px 
 }
 .sort select{
     border: none;
     border-bottom: 1px solid black;
-    width: 100%
+    width: 100% 
 }
 .sort{
     border: 2px solid transparent;
     padding-bottom: 0.3rem;
-    line-height: 1rem
+    line-height: 1rem 
 }
 .sort select:focus{
-    outline: none
+    outline: none 
 }
 .sort.active{
-    background: whitesmoke
+    background: whitesmoke 
 }
 .sort.active select{
     background: none;
@@ -159,53 +158,35 @@ h2{
     font-weight: bold;
     padding: 0.4rem 0.5rem;
     border-radius: 2px;
-    transition: all 0.1s ease
+    transition: all 0.1s ease 
 }
 .reset-btn:focus{
     outline: none;
 }
 .reset-btn:hover{
     background: black;
-    color: white
+    color: white 
 }
 
 /* Media queries */
 
 /*extra small devices*/
-@media screen and (max-width: 575px) {    
+@media screen and (max-width: 575px) {
     .region-name{
-        font-size: 4rem
-    }
+        font-size: 4rem 
+   }
     .region-img{
         max-height: 25vh;
-        margin-top: 4vh
-    }
+        margin-top: 4vh 
+   }
     .filter-name{
-        font-size: 4rem
-    }
+        font-size: 4rem 
+   }
 }
-
 /*small devices*/
 @media screen and (min-width: 576px) and (max-width: 767px) {
-    
     .region-img{
         max-height: 25vh;
-        margin-top: 6vh
-    }
- }
- 
- /*medium devices*/
- @media screen and (min-width: 768px) and (max-width: 991px) {
-    
- }
- 
- /*large devices*/
- @media screen and (min-width: 992px) and (max-width: 1199px) {
-    
- }
- 
- 
- /*extra large devices*/
- @media screen and (min-width: 1200px) {
-   
- }
+        margin-top: 6vh 
+   }
+}

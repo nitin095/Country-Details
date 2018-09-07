@@ -1,12 +1,15 @@
 <div class="spinner" [hidden]='country'></div>
+
+<!-- header container -->
 <div class="container-fluid">
   <div class="row text-center header" *ngIf="country">
-      <back-btn class="country-back-btn"></back-btn>
+    <back-btn class="country-back-btn"></back-btn>
     <div class="col-12 pt-2 pt-sm-0" style="position: relative;">
       <img class="img-fluid flag" src="{{country.flag}}" style="max-height: 45vh;">
     </div>
   </div>
 </div>
+<!-- end header container -->
 
 <div class="container my-5" [ngClass]="{'d-none': !country}" *ngIf="country">
   <div class="row no-gutters name-row justify-content-center">

@@ -61,6 +61,8 @@
     <div class="col-12">
       <h2>Countries</h2>
     </div>
+
+    <!-- filters -->
     <div class="col-12">
       <div class="row justify-content-end px-5 pt-2 pb-3">
         <div class="col-6 col-md-3 sort" [ngClass]="{active: languageModel}" *ngIf="region">
@@ -94,6 +96,8 @@
         </div>
       </div>
     </div>
+
+    <!-- countries cards -->
     <div class="col-auto" *ngFor="let country of countries | search: searchInput | search: languageModel:'language' | search: selectedCurrency:'currency'">
       <div class="card my-3" style="width: 15rem;min-height: 21rem">
         <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height: 22vh">
@@ -136,7 +140,7 @@
             </div>
             <div class="col">
               <span class="hover" *ngFor="let currency of country.currencies;let last=last" [routerLink]="['/countries','currency',currency.code]">
-              {{currency.name}}{{last ? '' : ', '}} </span>
+                {{currency.name}}{{last ? '' : ', '}} </span>
             </div>
           </div>
           <div class="row no-gutters details-row">
@@ -161,5 +165,7 @@
         <button [routerLink]="['/country',country.alpha3Code]">View details</button>
       </div>
     </div>
+    <!-- end countries cards -->
+
   </div>
 </div>
